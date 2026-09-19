@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/apartment_blockout.tscn" id="1_p2wap"]
+
+[node name="View03HallCenter" type="Node3D" unique_id=1913730875]
+
+[node name="ApartmentBlockout" type="Node3D" parent="." unique_id=1465835589 instance=ExtResource("1_p2wap")]
+
+[node name="VantageCamera" type="Camera3D" parent="." unique_id=366209748]
+transform = Transform3D(-0.9918358, 0.021375626, -0.12571752, 0, 0.9858511, 0.1676233, 0.12752181, 0.16625479, -0.9778024, 2.25, 1.65, 1.7)
+current = true
+fov = 70.0

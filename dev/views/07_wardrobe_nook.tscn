@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/apartment_blockout.tscn" id="1_gknom"]
+
+[node name="View07WardrobeNook" type="Node3D" unique_id=363267625]
+
+[node name="ApartmentBlockout" type="Node3D" parent="." unique_id=1465835589 instance=ExtResource("1_gknom")]
+
+[node name="VantageCamera" type="Camera3D" parent="." unique_id=151904348]
+transform = Transform3D(-0.8161665, 0.21332173, -0.5369972, 0, 0.9293556, 0.3691858, 0.5778167, 0.3013171, -0.7585089, 5.15, 1.5, 3.72)
+current = true
+fov = 70.0
