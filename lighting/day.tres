@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="LightingPreset" format=3]
+
+[ext_resource type="Script" path="res://scripts/lighting/lighting_preset.gd" id="1_25d5x"]
+
+[resource]
+script = ExtResource("1_25d5x")
+preset_name = "day"
+sun_rotation_degrees = Vector3(-58, 150, 0)
+sun_color = Color(1, 0.97, 0.92, 1)
+sun_energy = 2.6
+sun_angular_distance = 0.8
+sun_shadow_blur = 0.8
+fill_rotation_degrees = Vector3(-55, 140, 0)
+fill_color = Color(0.95, 0.95, 0.96, 1)
+fill_energy = 0.75
+sky_top_color = Color(0.24, 0.48, 0.88, 1)
+sky_horizon_color = Color(0.78, 0.86, 0.92, 1)
+sky_ground_horizon_color = Color(0.66, 0.66, 0.62, 1)
+sky_ground_bottom_color = Color(0.32, 0.31, 0.29, 1)
+sky_energy = 1.25
+ambient_color = Color(0.72, 0.73, 0.75, 1)
+ambient_energy = 0.92
+ssao_intensity = 0.4
+ssil_enabled = false
+ssil_intensity = 0.0
+glow_bloom = 0.01
+glow_hdr_threshold = 1.4
+light_scales = {
+"Bathroom": 0.55
+}

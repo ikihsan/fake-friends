@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="LightingPreset" format=3]
+
+[ext_resource type="Script" path="res://scripts/lighting/lighting_preset.gd" id="1_cavfu"]
+
+[resource]
+script = ExtResource("1_cavfu")
+preset_name = "evening"
+sun_rotation_degrees = Vector3(-12, 250, 0)
+sun_color = Color(1, 0.72, 0.48, 1)
+sun_energy = 1.5
+sun_angular_distance = 2.0
+sun_shadow_blur = 1.4
+fill_rotation_degrees = Vector3(-22, 245, 0)
+fill_color = Color(1, 0.86, 0.74, 1)
+fill_energy = 0.25
+sky_top_color = Color(0.2, 0.28, 0.5, 1)
+sky_horizon_color = Color(0.86, 0.6, 0.42, 1)
+sky_ground_horizon_color = Color(0.42, 0.36, 0.34, 1)
+sky_ground_bottom_color = Color(0.18, 0.17, 0.18, 1)
+sky_energy = 0.9
+ambient_color = Color(0.48, 0.48, 0.54, 1)
+ambient_energy = 0.55
+ssao_intensity = 0.5
+ssil_enabled = false
+ssil_intensity = 0.0
+glow_bloom = 0.05
+glow_hdr_threshold = 1.1
+light_scales = {
+"Bathroom": 0.85,
+"Bedroom": 0.5,
+"BedsideLamp": 0.85,
+"Closet": 0.4,
+"Exterior": 0.6,
+"Hall": 0.75,
+"WardrobeNook": 0.7
+}
