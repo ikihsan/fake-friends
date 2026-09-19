@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/apartment_blockout.tscn" id="1"]
+[ext_resource type="Script" path="res://scripts/gameplay/apartment_morning.gd" id="2"]
+
+[node name="ApartmentMorning" type="Node3D"]
+script = ExtResource("2")
+
+[node name="Apartment" parent="." instance=ExtResource("1")]
