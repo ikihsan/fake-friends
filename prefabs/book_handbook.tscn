@@ -1,0 +1,32 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_door.tres" id="1_misnc"]
+[ext_resource type="Material" path="res://materials/mat_paint_white.tres" id="2_o4hj6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[node name="book_handbook" type="Node3D" unique_id=415846989]
+
+[node name="B0_CoverBottom" type="MeshInstance3D" parent="." unique_id=1327542544]
+transform = Transform3D(0.21, 0, 0, 0, 0.008, 0, 0, 0, 0.29, 0, 0.004, 0)
+material_override = ExtResource("1_misnc")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_Pages" type="MeshInstance3D" parent="." unique_id=2090586203]
+transform = Transform3D(0.195, 0, 0, 0, 0.032, 0, 0, 0, 0.275, 0.002, 0.024, 0)
+material_override = ExtResource("2_o4hj6")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B2_CoverTop" type="MeshInstance3D" parent="." unique_id=1687824481]
+transform = Transform3D(0.21, 0, 0, 0, 0.008, 0, 0, 0, 0.29, 0, 0.044, 0)
+material_override = ExtResource("1_misnc")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="L0" type="Label3D" parent="." unique_id=1676802397]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.05, 0)
+pixel_size = 0.00055
+double_sided = false
+modulate = Color(0.1, 0.08, 0.06, 1)
+text = "HANDBOOK"
+font_size = 64
+outline_size = 0

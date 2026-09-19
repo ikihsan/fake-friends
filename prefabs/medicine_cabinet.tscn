@@ -1,0 +1,29 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_paint_white.tres" id="1_bxklo"]
+[ext_resource type="Material" path="res://materials/mat_mirror.tres" id="2_6u75y"]
+[ext_resource type="Material" path="res://materials/mat_metal.tres" id="3_37bx8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[node name="medicine_cabinet" type="Node3D" unique_id=1952714052]
+
+[node name="B0_Body" type="MeshInstance3D" parent="." unique_id=1811697032]
+transform = Transform3D(0.55, 0, 0, 0, 0.45, 0, 0, 0, 0.16, 0, 0, 0)
+material_override = ExtResource("1_bxklo")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_DoorFrame" type="MeshInstance3D" parent="." unique_id=1597547482]
+transform = Transform3D(0.53, 0, 0, 0, 0.43, 0, 0, 0, 0.01, 0, 0, 0.085)
+material_override = ExtResource("1_bxklo")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B2_Mirror" type="MeshInstance3D" parent="." unique_id=1111511850]
+transform = Transform3D(0.49, 0, 0, 0, 0.39, 0, 0, 0, 0.008, 0, 0, 0.092)
+material_override = ExtResource("2_6u75y")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B3_Handle" type="MeshInstance3D" parent="." unique_id=772443409]
+transform = Transform3D(0.02, 0, 0, 0, 0.08, 0, 0, 0, 0.02, 0.2, 0, 0.1)
+material_override = ExtResource("3_37bx8")
+mesh = SubResource("BoxMesh_dsxwc")

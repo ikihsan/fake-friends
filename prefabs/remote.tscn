@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_plastic_dark.tres" id="1_5a5pw"]
+[ext_resource type="Material" path="res://materials/mat_plastic.tres" id="2_54n4k"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[node name="remote" type="Node3D" unique_id=1592625093]
+
+[node name="B0_Body" type="MeshInstance3D" parent="." unique_id=1285064479]
+transform = Transform3D(0.05, 0, 0, 0, 0.024, 0, 0, 0, 0.18, 0, 0.012, 0)
+material_override = ExtResource("1_5a5pw")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_Buttons" type="MeshInstance3D" parent="." unique_id=813613041]
+transform = Transform3D(0.036, 0, 0, 0, 0.004, 0, 0, 0, 0.08, 0, 0.025, 0.04)
+material_override = ExtResource("2_54n4k")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B2_Dpad" type="MeshInstance3D" parent="." unique_id=1289467533]
+transform = Transform3D(0.028, 0, 0, 0, 0.004, 0, 0, 0, 0.04, 0, 0.025, -0.03)
+material_override = ExtResource("2_54n4k")
+mesh = SubResource("BoxMesh_dsxwc")

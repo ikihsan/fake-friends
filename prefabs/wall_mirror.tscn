@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_metal.tres" id="1_0jkqs"]
+[ext_resource type="Material" path="res://materials/mat_mirror.tres" id="2_k2hhy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[node name="wall_mirror" type="Node3D" unique_id=1315590614]
+
+[node name="B0_Frame" type="MeshInstance3D" parent="." unique_id=915061581]
+transform = Transform3D(0.58, 0, 0, 0, 0.73, 0, 0, 0, 0.03, 0, 0, 0)
+material_override = ExtResource("1_0jkqs")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_Glass" type="MeshInstance3D" parent="." unique_id=198812176]
+transform = Transform3D(0.54, 0, 0, 0, 0.69, 0, 0, 0, 0.008, 0, 0, 0.018)
+material_override = ExtResource("2_k2hhy")
+mesh = SubResource("BoxMesh_dsxwc")

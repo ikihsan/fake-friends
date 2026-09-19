@@ -1,0 +1,61 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_ceramic.tres" id="1_1eoxv"]
+[ext_resource type="Material" path="res://materials/mat_metal.tres" id="2_sorye"]
+[ext_resource type="Material" path="res://materials/mat_plastic.tres" id="3_ikvro"]
+[ext_resource type="Material" path="res://materials/mat_plastic_dark.tres" id="4_6no1f"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_32vgm"]
+top_radius = 0.015
+bottom_radius = 0.015
+height = 0.8
+radial_segments = 12
+rings = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qeopb"]
+size = Vector3(0.9, 0.1, 0.9)
+
+[node name="shower_unit" type="Node3D" unique_id=1900890236]
+
+[node name="B0_Tray" type="MeshInstance3D" parent="." unique_id=93182369]
+transform = Transform3D(0.9, 0, 0, 0, 0.09, 0, 0, 0, 0.9, 0, 0.045, 0)
+material_override = ExtResource("1_1eoxv")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_TrayLip" type="MeshInstance3D" parent="." unique_id=462025254]
+transform = Transform3D(0.94, 0, 0, 0, 0.02, 0, 0, 0, 0.94, 0, 0.09, 0)
+material_override = ExtResource("1_1eoxv")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B2_Mixer" type="MeshInstance3D" parent="." unique_id=566329459]
+transform = Transform3D(0.16, 0, 0, 0, 0.06, 0, 0, 0, 0.06, 0, 1.05, -0.42)
+material_override = ExtResource("2_sorye")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B3_Head" type="MeshInstance3D" parent="." unique_id=174616684]
+transform = Transform3D(0.1, 0, 0, 0, 0.03, 0, 0, 0, 0.16, 0, 1.86, -0.34)
+material_override = ExtResource("2_sorye")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B4_Bottle" type="MeshInstance3D" parent="." unique_id=1598195766]
+transform = Transform3D(0.07, 0, 0, 0, 0.24, 0, 0, 0, 0.07, 0.34, 0.24, -0.3)
+material_override = ExtResource("3_ikvro")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B5_BottleCap" type="MeshInstance3D" parent="." unique_id=1627072276]
+transform = Transform3D(0.04, 0, 0, 0, 0.03, 0, 0, 0, 0.04, 0.34, 0.375, -0.3)
+material_override = ExtResource("4_6no1f")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="C0_Riser" type="MeshInstance3D" parent="." unique_id=1395191595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45, -0.42)
+material_override = ExtResource("2_sorye")
+mesh = SubResource("CylinderMesh_32vgm")
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=1484291423]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision" unique_id=359005243]
+shape = SubResource("BoxShape3D_qeopb")

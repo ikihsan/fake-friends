@@ -1,0 +1,89 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_metal.tres" id="1_vhkof"]
+[ext_resource type="Material" path="res://materials/mat_lamp_glow.tres" id="2_vvd44"]
+[ext_resource type="Material" path="res://materials/mat_metal_dark.tres" id="3_5hrwk"]
+[ext_resource type="Material" path="res://materials/mat_wood_light.tres" id="4_40jp8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_oveka"]
+size = Vector3(0.1, 0.03, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_47f4r"]
+size = Vector3(0.1, 0.03, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nnlff"]
+size = Vector3(0.62, 0.018, 0.14)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bgimc"]
+size = Vector3(0.62, 0.018, 0.14)
+
+[node name="ceiling_fan" type="Node3D" unique_id=332012255]
+
+[node name="B0_Canopy" type="MeshInstance3D" parent="." unique_id=448339120]
+transform = Transform3D(0.14, 0, 0, 0, 0.03, 0, 0, 0, 0.14, 0, -0.015, 0)
+material_override = ExtResource("1_vhkof")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_Rod" type="MeshInstance3D" parent="." unique_id=1074410925]
+transform = Transform3D(0.035, 0, 0, 0, 0.2, 0, 0, 0, 0.035, 0, -0.1, 0)
+material_override = ExtResource("1_vhkof")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B2_Motor" type="MeshInstance3D" parent="." unique_id=1713443363]
+transform = Transform3D(0.26, 0, 0, 0, 0.12, 0, 0, 0, 0.26, 0, -0.24, 0)
+material_override = ExtResource("1_vhkof")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B3_Globe" type="MeshInstance3D" parent="." unique_id=1383941244]
+transform = Transform3D(0.17, 0, 0, 0, 0.11, 0, 0, 0, 0.17, 0, -0.36, 0)
+material_override = ExtResource("2_vvd44")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B4_Bracket0" type="MeshInstance3D" parent="." unique_id=1180385384]
+transform = Transform3D(0.1, 0, 0, 0, 0.03, 0, 0, 0, 0.1, 0.14, -0.28, 0)
+material_override = ExtResource("3_5hrwk")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B5_Bracket1" type="MeshInstance3D" parent="." unique_id=1983488200]
+transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, -0.07, -0.28, 0.121)
+material_override = ExtResource("3_5hrwk")
+mesh = SubResource("BoxMesh_oveka")
+
+[node name="B6_Bracket2" type="MeshInstance3D" parent="." unique_id=1478047506]
+transform = Transform3D(-0.4999999, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, -0.4999999, -0.07, -0.28, -0.121)
+material_override = ExtResource("3_5hrwk")
+mesh = SubResource("BoxMesh_47f4r")
+
+[node name="B7_Blade0" type="MeshInstance3D" parent="." unique_id=123405166]
+transform = Transform3D(0.62, 0, 0, 0, 0.018, 0, 0, 0, 0.14, 0.36, -0.28, 0)
+material_override = ExtResource("4_40jp8")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B8_Blade1" type="MeshInstance3D" parent="." unique_id=491142259]
+transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, -0.18, -0.28, 0.31)
+material_override = ExtResource("4_40jp8")
+mesh = SubResource("BoxMesh_nnlff")
+
+[node name="B9_Blade2" type="MeshInstance3D" parent="." unique_id=374658315]
+transform = Transform3D(-0.4999999, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, -0.4999999, -0.18, -0.28, -0.31)
+material_override = ExtResource("4_40jp8")
+mesh = SubResource("BoxMesh_bgimc")
+
+[node name="B10_PullChain" type="MeshInstance3D" parent="." unique_id=241033267]
+transform = Transform3D(0.006, 0, 0, 0, 0.16, 0, 0, 0, 0.006, 0.1, -0.45, 0.06)
+material_override = ExtResource("1_vhkof")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B11_ChainBead" type="MeshInstance3D" parent="." unique_id=911084601]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0.1, -0.53, 0.06)
+material_override = ExtResource("1_vhkof")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="O0" type="OmniLight3D" parent="." unique_id=1036255803]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.42, 0)
+light_color = Color(1, 0.9, 0.76, 1)
+light_energy = 1.5
+shadow_enabled = true
+omni_range = 7.0

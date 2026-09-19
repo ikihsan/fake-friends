@@ -1,0 +1,34 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_wood.tres" id="1_trhqx"]
+[ext_resource type="Material" path="res://materials/mat_metal.tres" id="2_qjt4d"]
+[ext_resource type="Material" path="res://materials/mat_fabric.tres" id="3_sl3vh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[node name="clothes_hook" type="Node3D" unique_id=1553610178]
+
+[node name="B0_Plate" type="MeshInstance3D" parent="." unique_id=179642171]
+transform = Transform3D(0.1, 0, 0, 0, 0.12, 0, 0, 0, 0.03, 0, 0, 0)
+material_override = ExtResource("1_trhqx")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_Peg" type="MeshInstance3D" parent="." unique_id=529008838]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.08, 0, -0.02, 0.05)
+material_override = ExtResource("2_qjt4d")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B2_BagHandle" type="MeshInstance3D" parent="." unique_id=1907964469]
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.02, 0, -0.075, 0.085)
+material_override = ExtResource("3_sl3vh")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B3_Bag" type="MeshInstance3D" parent="." unique_id=972724571]
+transform = Transform3D(0.26, 0, 0, 0, 0.34, 0, 0, 0, 0.09, 0, -0.28, 0.09)
+material_override = ExtResource("3_sl3vh")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B4_BagFlap" type="MeshInstance3D" parent="." unique_id=1651198822]
+transform = Transform3D(0.24, 0, 0, 0, 0.12, 0, 0, 0, 0.04, 0, -0.16, 0.115)
+material_override = ExtResource("3_sl3vh")
+mesh = SubResource("BoxMesh_dsxwc")

@@ -1,0 +1,36 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_bedding.tres" id="1_o5qwx"]
+[ext_resource type="Material" path="res://materials/mat_fabric.tres" id="2_4ewib"]
+[ext_resource type="Material" path="res://materials/mat_rug.tres" id="3_orj7t"]
+[ext_resource type="Material" path="res://materials/mat_towel.tres" id="4_hyfg7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ulp25"]
+size = Vector3(0.29, 0.04, 0.23)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ts3ix"]
+size = Vector3(0.3, 0.04, 0.24)
+
+[node name="folded_clothes" type="Node3D" unique_id=1448642661]
+
+[node name="B0_Fold1" type="MeshInstance3D" parent="." unique_id=1316539791]
+transform = Transform3D(0.3, 0, 0, 0, 0.04, 0, 0, 0, 0.24, 0, 0.02, 0)
+material_override = ExtResource("1_o5qwx")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_Fold2" type="MeshInstance3D" parent="." unique_id=197966709]
+transform = Transform3D(0.9986295, 0, 0.05233596, 0, 1, 0, -0.05233596, 0, 0.9986295, 0.004, 0.062, -0.005)
+material_override = ExtResource("2_4ewib")
+mesh = SubResource("BoxMesh_ulp25")
+
+[node name="B2_Fold3" type="MeshInstance3D" parent="." unique_id=394427001]
+transform = Transform3D(0.99939084, 0, -0.034899496, 0, 1, 0, 0.034899496, 0, 0.99939084, -0.004, 0.104, 0.004)
+material_override = ExtResource("3_orj7t")
+mesh = SubResource("BoxMesh_ts3ix")
+
+[node name="B3_Fold4" type="MeshInstance3D" parent="." unique_id=510453109]
+transform = Transform3D(0.28, 0, 0, 0, 0.04, 0, 0, 0, 0.22, 0.002, 0.146, 0)
+material_override = ExtResource("4_hyfg7")
+mesh = SubResource("BoxMesh_dsxwc")

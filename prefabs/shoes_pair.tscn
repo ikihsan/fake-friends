@@ -1,0 +1,54 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_dark.tres" id="1_3fxym"]
+[ext_resource type="Material" path="res://materials/mat_plastic_dark.tres" id="2_0i21k"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5tqbk"]
+size = Vector3(0.1, 0.03, 0.26)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b8o8f"]
+size = Vector3(0.095, 0.058, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ov3nl"]
+size = Vector3(0.09, 0.05, 0.07)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c7y28"]
+size = Vector3(0.1, 0.03, 0.26)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ei342"]
+size = Vector3(0.095, 0.058, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y71ub"]
+size = Vector3(0.09, 0.05, 0.07)
+
+[node name="shoes_pair" type="Node3D" unique_id=2066949367]
+
+[node name="B0_SoleL" type="MeshInstance3D" parent="." unique_id=191543895]
+transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, -0.085, 0.02, 0)
+material_override = ExtResource("1_3fxym")
+mesh = SubResource("BoxMesh_5tqbk")
+
+[node name="B1_UpperL" type="MeshInstance3D" parent="." unique_id=744329909]
+transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, -0.085, 0.062, -0.02)
+material_override = ExtResource("2_0i21k")
+mesh = SubResource("BoxMesh_b8o8f")
+
+[node name="B2_ToeL" type="MeshInstance3D" parent="." unique_id=273470317]
+transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, -0.085, 0.05, 0.1)
+material_override = ExtResource("2_0i21k")
+mesh = SubResource("BoxMesh_ov3nl")
+
+[node name="B3_SoleR" type="MeshInstance3D" parent="." unique_id=900698079]
+transform = Transform3D(0.9945219, 0, -0.104528464, 0, 1, 0, 0.104528464, 0, 0.9945219, 0.085, 0.02, 0.01)
+material_override = ExtResource("1_3fxym")
+mesh = SubResource("BoxMesh_c7y28")
+
+[node name="B4_UpperR" type="MeshInstance3D" parent="." unique_id=2006206233]
+transform = Transform3D(0.9945219, 0, -0.104528464, 0, 1, 0, 0.104528464, 0, 0.9945219, 0.085, 0.062, -0.01)
+material_override = ExtResource("2_0i21k")
+mesh = SubResource("BoxMesh_ei342")
+
+[node name="B5_ToeR" type="MeshInstance3D" parent="." unique_id=1400981000]
+transform = Transform3D(0.9945219, 0, -0.104528464, 0, 1, 0, 0.104528464, 0, 0.9945219, 0.085, 0.05, 0.11)
+material_override = ExtResource("2_0i21k")
+mesh = SubResource("BoxMesh_y71ub")

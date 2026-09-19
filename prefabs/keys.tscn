@@ -1,0 +1,43 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_metal.tres" id="1_3as7m"]
+[ext_resource type="Material" path="res://materials/mat_metal_dark.tres" id="2_mqglr"]
+[ext_resource type="Material" path="res://materials/mat_plastic_dark.tres" id="3_8nwfg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2a11g"]
+size = Vector3(0.014, 0.006, 0.075)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5dy0w"]
+size = Vector3(0.014, 0.006, 0.07)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0wrdv"]
+size = Vector3(0.012, 0.006, 0.06)
+
+[node name="keys" type="Node3D" unique_id=1347872437]
+
+[node name="B0_Ring" type="MeshInstance3D" parent="." unique_id=1659881467]
+transform = Transform3D(0.04, 0, 0, 0, 0.008, 0, 0, 0, 0.03, 0, 0.005, 0)
+material_override = ExtResource("1_3as7m")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_Key1" type="MeshInstance3D" parent="." unique_id=223322561]
+transform = Transform3D(0.9781476, 0, 0.2079117, 0, 1, 0, -0.2079117, 0, 0.9781476, 0.02, 0.006, 0.05)
+material_override = ExtResource("1_3as7m")
+mesh = SubResource("BoxMesh_2a11g")
+
+[node name="B2_Key2" type="MeshInstance3D" parent="." unique_id=243602018]
+transform = Transform3D(0.99026805, 0, -0.1391731, 0, 1, 0, 0.1391731, 0, 0.99026805, -0.012, 0.006, 0.055)
+material_override = ExtResource("1_3as7m")
+mesh = SubResource("BoxMesh_5dy0w")
+
+[node name="B3_Key3" type="MeshInstance3D" parent="." unique_id=1461285334]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 0.004, 0.006, 0.05)
+material_override = ExtResource("2_mqglr")
+mesh = SubResource("BoxMesh_0wrdv")
+
+[node name="B4_Fob" type="MeshInstance3D" parent="." unique_id=1770343871]
+transform = Transform3D(0.03, 0, 0, 0, 0.008, 0, 0, 0, 0.05, -0.03, 0.006, 0.018)
+material_override = ExtResource("3_8nwfg")
+mesh = SubResource("BoxMesh_dsxwc")

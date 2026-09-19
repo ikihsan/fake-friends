@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_rug.tres" id="1_gplky"]
+[ext_resource type="Material" path="res://materials/mat_fabric.tres" id="2_qpkqr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[node name="rug" type="Node3D" unique_id=686408088]
+
+[node name="B0_Base" type="MeshInstance3D" parent="." unique_id=659261073]
+transform = Transform3D(1.1, 0, 0, 0, 0.016, 0, 0, 0, 0.7, 0, 0.008, 0)
+material_override = ExtResource("1_gplky")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_Inner" type="MeshInstance3D" parent="." unique_id=1892440643]
+transform = Transform3D(0.94, 0, 0, 0, 0.012, 0, 0, 0, 0.56, 0, 0.017, 0)
+material_override = ExtResource("2_qpkqr")
+mesh = SubResource("BoxMesh_dsxwc")

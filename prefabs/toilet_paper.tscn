@@ -1,0 +1,35 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_metal.tres" id="1_5uwp1"]
+[ext_resource type="Material" path="res://materials/mat_paper.tres" id="2_nwgxt"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7ho5g"]
+top_radius = 0.055
+bottom_radius = 0.055
+height = 0.1
+radial_segments = 12
+rings = 1
+
+[node name="toilet_paper" type="Node3D" unique_id=1795425984]
+
+[node name="B0_Bracket" type="MeshInstance3D" parent="." unique_id=1077112036]
+transform = Transform3D(0.14, 0, 0, 0, 0.03, 0, 0, 0, 0.06, 0, 0, 0)
+material_override = ExtResource("1_5uwp1")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_Arm" type="MeshInstance3D" parent="." unique_id=1260197073]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.1, 0.05, 0, 0.075)
+material_override = ExtResource("1_5uwp1")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B2_Flap" type="MeshInstance3D" parent="." unique_id=1078260628]
+transform = Transform3D(0.1, 0, 0, 0, 0.09, 0, 0, 0, 0.008, 0.05, -0.062, 0.155)
+material_override = ExtResource("2_nwgxt")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="C0_Roll" type="MeshInstance3D" parent="." unique_id=88902477]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.05, 0, 0.14)
+material_override = ExtResource("2_nwgxt")
+mesh = SubResource("CylinderMesh_7ho5g")

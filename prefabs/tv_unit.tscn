@@ -1,0 +1,77 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_wood.tres" id="1_31esk"]
+[ext_resource type="Material" path="res://materials/mat_wood_light.tres" id="2_k2o8b"]
+[ext_resource type="Material" path="res://materials/mat_dark.tres" id="3_i6vjj"]
+[ext_resource type="Material" path="res://materials/mat_metal.tres" id="4_8m50m"]
+[ext_resource type="Material" path="res://materials/mat_plastic_dark.tres" id="5_5rtca"]
+[ext_resource type="Material" path="res://materials/mat_screen.tres" id="6_quk7c"]
+[ext_resource type="Material" path="res://materials/mat_book_cover_rust.tres" id="7_q25qp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_62utf"]
+size = Vector3(1.34, 0.62, 0.49)
+
+[node name="tv_unit" type="Node3D" unique_id=1560690051]
+
+[node name="B0_Carcass" type="MeshInstance3D" parent="." unique_id=233239886]
+transform = Transform3D(1.3, 0, 0, 0, 0.5, 0, 0, 0, 0.45, 0, 0.25, 0)
+material_override = ExtResource("1_31esk")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_Top" type="MeshInstance3D" parent="." unique_id=1012206430]
+transform = Transform3D(1.34, 0, 0, 0, 0.03, 0, 0, 0, 0.49, 0, 0.51, 0)
+material_override = ExtResource("2_k2o8b")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B2_DoorGap" type="MeshInstance3D" parent="." unique_id=1754495904]
+transform = Transform3D(0.014, 0, 0, 0, 0.42, 0, 0, 0, 0.004, 0, 0.25, 0.228)
+material_override = ExtResource("3_i6vjj")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B3_HandleL" type="MeshInstance3D" parent="." unique_id=1588700856]
+transform = Transform3D(0.02, 0, 0, 0, 0.1, 0, 0, 0, 0.02, 0.05, 0.25, 0.235)
+material_override = ExtResource("4_8m50m")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B4_HandleR" type="MeshInstance3D" parent="." unique_id=1784189069]
+transform = Transform3D(0.02, 0, 0, 0, 0.1, 0, 0, 0, 0.02, -0.05, 0.25, 0.235)
+material_override = ExtResource("4_8m50m")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B5_Stand" type="MeshInstance3D" parent="." unique_id=509162741]
+transform = Transform3D(0.26, 0, 0, 0, 0.12, 0, 0, 0, 0.2, 0, 0.58, 0)
+material_override = ExtResource("5_5rtca")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B6_TVBody" type="MeshInstance3D" parent="." unique_id=181260362]
+transform = Transform3D(0.94, 0, 0, 0, 0.56, 0, 0, 0, 0.06, 0, 0.86, 0)
+material_override = ExtResource("5_5rtca")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B7_Screen" type="MeshInstance3D" parent="." unique_id=1329938247]
+transform = Transform3D(0.88, 0, 0, 0, 0.5, 0, 0, 0, 0.006, 0, 0.87, 0.032)
+material_override = ExtResource("6_quk7c")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B8_SetTopBox" type="MeshInstance3D" parent="." unique_id=1100350171]
+transform = Transform3D(0.22, 0, 0, 0, 0.05, 0, 0, 0, 0.16, -0.45, 0.545, 0)
+material_override = ExtResource("5_5rtca")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B9_SetTopLed" type="MeshInstance3D" parent="." unique_id=830187533]
+transform = Transform3D(0.03, 0, 0, 0, 0.01, 0, 0, 0, 0.004, -0.45, 0.55, 0.075)
+material_override = ExtResource("6_quk7c")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B10_BookOnTop" type="MeshInstance3D" parent="." unique_id=134732987]
+transform = Transform3D(0.14, 0, 0, 0, 0.03, 0, 0, 0, 0.2, 0.42, 0.545, 0)
+material_override = ExtResource("7_q25qp")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=675874281]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision" unique_id=1347125194]
+shape = SubResource("BoxShape3D_62utf")

@@ -1,0 +1,39 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_ceramic.tres" id="1_2rc01"]
+[ext_resource type="Material" path="res://materials/mat_plastic.tres" id="2_jwc06"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dl6en"]
+size = Vector3(0.012, 0.1, 0.012)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c76eh"]
+size = Vector3(0.08, 0.018, 0.06)
+
+[node name="toiletries" type="Node3D" unique_id=701874562]
+
+[node name="B0_Cup" type="MeshInstance3D" parent="." unique_id=1601858832]
+transform = Transform3D(0.07, 0, 0, 0, 0.09, 0, 0, 0, 0.07, 0, 0.045, 0)
+material_override = ExtResource("1_2rc01")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_Brush" type="MeshInstance3D" parent="." unique_id=216677593]
+transform = Transform3D(0.99026805, -0.1391731, 0, 0.1391731, 0.99026805, 0, 0, 0, 1, 0.012, 0.115, 0)
+material_override = ExtResource("2_jwc06")
+mesh = SubResource("BoxMesh_dl6en")
+
+[node name="B2_BrushHead" type="MeshInstance3D" parent="." unique_id=2081541015]
+transform = Transform3D(0.014, 0, 0, 0, 0.03, 0, 0, 0, 0.012, 0.02, 0.168, 0)
+material_override = ExtResource("2_jwc06")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B3_Dish" type="MeshInstance3D" parent="." unique_id=229906201]
+transform = Transform3D(0.11, 0, 0, 0, 0.016, 0, 0, 0, 0.09, 0.13, 0.008, 0)
+material_override = ExtResource("1_2rc01")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B4_Soap" type="MeshInstance3D" parent="." unique_id=1929472930]
+transform = Transform3D(0.9781476, 0, 0.2079117, 0, 1, 0, -0.2079117, 0, 0.9781476, 0.13, 0.024, 0)
+material_override = ExtResource("1_2rc01")
+mesh = SubResource("BoxMesh_c76eh")

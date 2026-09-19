@@ -1,0 +1,56 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_wood.tres" id="1_swrjx"]
+[ext_resource type="Material" path="res://materials/mat_metal.tres" id="2_e3pbv"]
+[ext_resource type="Material" path="res://materials/mat_fabric.tres" id="3_ha0b8"]
+[ext_resource type="Material" path="res://materials/mat_rug.tres" id="4_0igax"]
+[ext_resource type="Material" path="res://materials/mat_bedding.tres" id="5_eh8ik"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[node name="coat_hooks" type="Node3D" unique_id=391169427]
+
+[node name="B0_Board" type="MeshInstance3D" parent="." unique_id=2052762347]
+transform = Transform3D(0.7, 0, 0, 0, 0.12, 0, 0, 0, 0.03, 0, 0, 0)
+material_override = ExtResource("1_swrjx")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_Hook0" type="MeshInstance3D" parent="." unique_id=139900549]
+transform = Transform3D(0.02, 0, 0, 0, 0.1, 0, 0, 0, 0.07, -0.25, -0.03, 0.05)
+material_override = ExtResource("2_e3pbv")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B2_Hook1" type="MeshInstance3D" parent="." unique_id=1190257547]
+transform = Transform3D(0.02, 0, 0, 0, 0.1, 0, 0, 0, 0.07, 0, -0.03, 0.05)
+material_override = ExtResource("2_e3pbv")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B3_Hook2" type="MeshInstance3D" parent="." unique_id=1441599797]
+transform = Transform3D(0.02, 0, 0, 0, 0.1, 0, 0, 0, 0.07, 0.25, -0.03, 0.05)
+material_override = ExtResource("2_e3pbv")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B4_CoatShoulder" type="MeshInstance3D" parent="." unique_id=168316757]
+transform = Transform3D(0.36, 0, 0, 0, 0.08, 0, 0, 0, 0.08, -0.22, -0.08, 0.07)
+material_override = ExtResource("3_ha0b8")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B5_Coat" type="MeshInstance3D" parent="." unique_id=749411029]
+transform = Transform3D(0.34, 0, 0, 0, 0.8, 0, 0, 0, 0.06, -0.22, -0.46, 0.07)
+material_override = ExtResource("3_ha0b8")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B6_BagHandle" type="MeshInstance3D" parent="." unique_id=1247340972]
+transform = Transform3D(0.07, 0, 0, 0, 0.08, 0, 0, 0, 0.02, 0.02, -0.08, 0.075)
+material_override = ExtResource("4_0igax")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B7_Bag" type="MeshInstance3D" parent="." unique_id=1044351918]
+transform = Transform3D(0.2, 0, 0, 0, 0.28, 0, 0, 0, 0.08, 0.02, -0.26, 0.08)
+material_override = ExtResource("4_0igax")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B8_Scarf" type="MeshInstance3D" parent="." unique_id=1415468712]
+transform = Transform3D(0.16, 0, 0, 0, 0.6, 0, 0, 0, 0.05, 0.24, -0.36, 0.07)
+material_override = ExtResource("5_eh8ik")
+mesh = SubResource("BoxMesh_dsxwc")

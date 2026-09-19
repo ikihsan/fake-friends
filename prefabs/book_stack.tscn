@@ -1,0 +1,30 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_book_cover.tres" id="1_aoagr"]
+[ext_resource type="Material" path="res://materials/mat_book_cover_rust.tres" id="2_x2w0t"]
+[ext_resource type="Material" path="res://materials/mat_paper.tres" id="3_nbcp3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lpkae"]
+size = Vector3(0.14, 0.028, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qe8f6"]
+size = Vector3(0.13, 0.024, 0.19)
+
+[node name="book_stack" type="Node3D" unique_id=498392293]
+
+[node name="B0_Book1" type="MeshInstance3D" parent="." unique_id=271965119]
+transform = Transform3D(0.15, 0, 0, 0, 0.03, 0, 0, 0, 0.21, 0, 0.015, 0)
+material_override = ExtResource("1_aoagr")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_Book2" type="MeshInstance3D" parent="." unique_id=359198712]
+transform = Transform3D(0.9945219, 0, 0.104528464, 0, 1, 0, -0.104528464, 0, 0.9945219, 0.01, 0.045, -0.006)
+material_override = ExtResource("2_x2w0t")
+mesh = SubResource("BoxMesh_lpkae")
+
+[node name="B2_Book3" type="MeshInstance3D" parent="." unique_id=2013111706]
+transform = Transform3D(0.9975641, 0, -0.06975647, 0, 1, 0, 0.06975647, 0, 0.9975641, -0.006, 0.072, 0.01)
+material_override = ExtResource("3_nbcp3")
+mesh = SubResource("BoxMesh_qe8f6")

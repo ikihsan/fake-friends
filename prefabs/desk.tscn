@@ -1,0 +1,82 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_wood_light.tres" id="1_orh1w"]
+[ext_resource type="Material" path="res://materials/mat_wood.tres" id="2_d2y5n"]
+[ext_resource type="Material" path="res://materials/mat_plastic_dark.tres" id="3_i35n7"]
+[ext_resource type="Material" path="res://materials/mat_screen.tres" id="4_rgab2"]
+[ext_resource type="Material" path="res://materials/mat_ceramic.tres" id="5_ih2wb"]
+[ext_resource type="Material" path="res://materials/mat_metal_dark.tres" id="6_ldw16"]
+[ext_resource type="Material" path="res://materials/mat_lamp_glow.tres" id="7_grrp5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8uu1n"]
+size = Vector3(1.2, 0.76, 0.6)
+
+[node name="desk" type="Node3D" unique_id=1767057204]
+
+[node name="B0_Top" type="MeshInstance3D" parent="." unique_id=923355176]
+transform = Transform3D(1.2, 0, 0, 0, 0.04, 0, 0, 0, 0.6, 0, 0.74, 0)
+material_override = ExtResource("1_orh1w")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_SideL" type="MeshInstance3D" parent="." unique_id=1927193049]
+transform = Transform3D(0.06, 0, 0, 0, 0.74, 0, 0, 0, 0.56, -0.56, 0.37, 0)
+material_override = ExtResource("2_d2y5n")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B2_SideR" type="MeshInstance3D" parent="." unique_id=1136796455]
+transform = Transform3D(0.06, 0, 0, 0, 0.74, 0, 0, 0, 0.56, 0.56, 0.37, 0)
+material_override = ExtResource("2_d2y5n")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B3_BackPanel" type="MeshInstance3D" parent="." unique_id=2101949453]
+transform = Transform3D(1.06, 0, 0, 0, 0.4, 0, 0, 0, 0.03, 0, 0.48, -0.28)
+material_override = ExtResource("2_d2y5n")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B4_LaptopBase" type="MeshInstance3D" parent="." unique_id=621655632]
+transform = Transform3D(0.32, 0, 0, 0, 0.02, 0, 0, 0, 0.22, 0.12, 0.78, 0.06)
+material_override = ExtResource("3_i35n7")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B5_LaptopLid" type="MeshInstance3D" parent="." unique_id=1380109442]
+transform = Transform3D(0.32, 0, 0, 0, 0.22, 0, 0, 0, 0.02, 0.12, 0.89, -0.04)
+material_override = ExtResource("3_i35n7")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B6_LaptopScreen" type="MeshInstance3D" parent="." unique_id=1770921965]
+transform = Transform3D(0.28, 0, 0, 0, 0.18, 0, 0, 0, 0.004, 0.12, 0.89, -0.028)
+material_override = ExtResource("4_rgab2")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B7_Mug" type="MeshInstance3D" parent="." unique_id=1524952549]
+transform = Transform3D(0.08, 0, 0, 0, 0.1, 0, 0, 0, 0.08, -0.3, 0.79, 0.1)
+material_override = ExtResource("5_ih2wb")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B8_MugHandle" type="MeshInstance3D" parent="." unique_id=319173]
+transform = Transform3D(0.02, 0, 0, 0, 0.05, 0, 0, 0, 0.02, -0.35, 0.79, 0.1)
+material_override = ExtResource("5_ih2wb")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B9_LampBase" type="MeshInstance3D" parent="." unique_id=1025455218]
+transform = Transform3D(0.11, 0, 0, 0, 0.02, 0, 0, 0, 0.11, -0.44, 0.77, 0.2)
+material_override = ExtResource("6_ldw16")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B10_LampStem" type="MeshInstance3D" parent="." unique_id=845134282]
+transform = Transform3D(0.02, 0, 0, 0, 0.26, 0, 0, 0, 0.02, -0.44, 0.9, 0.2)
+material_override = ExtResource("6_ldw16")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B11_LampHead" type="MeshInstance3D" parent="." unique_id=237565815]
+transform = Transform3D(0.13, 0, 0, 0, 0.08, 0, 0, 0, 0.13, -0.44, 1.03, 0.15)
+material_override = ExtResource("7_grrp5")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=1981356737]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38, 0)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision" unique_id=495963833]
+shape = SubResource("BoxShape3D_8uu1n")

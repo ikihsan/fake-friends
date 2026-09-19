@@ -1,0 +1,57 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_paper.tres" id="1_wnygw"]
+[ext_resource type="Material" path="res://materials/mat_tape.tres" id="2_5p2cn"]
+[ext_resource type="Material" path="res://materials/mat_ink.tres" id="3_yygig"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[node name="reminder" type="Node3D" unique_id=1856273145]
+
+[node name="B0_Paper" type="MeshInstance3D" parent="." unique_id=1236833285]
+transform = Transform3D(0.3, 0, 0, 0, 0.4, 0, 0, 0, 0.005, 0, 0, 0)
+material_override = ExtResource("1_wnygw")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_TapeTL" type="MeshInstance3D" parent="." unique_id=1762510920]
+transform = Transform3D(0.075, 0, 0, 0, 0.045, 0, 0, 0, 0.002, -0.115, 0.185, 0.004)
+material_override = ExtResource("2_5p2cn")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B2_TapeTR" type="MeshInstance3D" parent="." unique_id=1335445990]
+transform = Transform3D(0.075, 0, 0, 0, 0.045, 0, 0, 0, 0.002, 0.115, 0.185, 0.004)
+material_override = ExtResource("2_5p2cn")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B3_TapeBL" type="MeshInstance3D" parent="." unique_id=1367444102]
+transform = Transform3D(0.075, 0, 0, 0, 0.045, 0, 0, 0, 0.002, -0.115, -0.185, 0.004)
+material_override = ExtResource("2_5p2cn")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B4_TapeBR" type="MeshInstance3D" parent="." unique_id=1923876416]
+transform = Transform3D(0.075, 0, 0, 0, 0.045, 0, 0, 0, 0.002, 0.115, -0.185, 0.004)
+material_override = ExtResource("2_5p2cn")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B5_Underline" type="MeshInstance3D" parent="." unique_id=1164501723]
+transform = Transform3D(0.215, 0, 0, 0, 0.006, 0, 0, 0, 0.002, 0, -0.136, 0.006)
+material_override = ExtResource("3_yygig")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B6_Underline2" type="MeshInstance3D" parent="." unique_id=1579612731]
+transform = Transform3D(0.13, 0, 0, 0, 0.005, 0, 0, 0, 0.002, 0.022, -0.148, 0.006)
+material_override = ExtResource("3_yygig")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="L0" type="Label3D" parent="." unique_id=1001661219]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0.008)
+pixel_size = 0.001
+shaded = true
+double_sided = false
+modulate = Color(0.12, 0.13, 0.17, 1)
+text = "DON'T
+FORGET.
+READ THE
+HANDBOOK."
+font_size = 48
+outline_size = 0

@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_plastic_dark.tres" id="1_abih6"]
+[ext_resource type="Material" path="res://materials/mat_dark.tres" id="2_ojfho"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[node name="phone" type="Node3D" unique_id=417663974]
+
+[node name="B0_Body" type="MeshInstance3D" parent="." unique_id=1251057051]
+transform = Transform3D(0.072, 0, 0, 0, 0.012, 0, 0, 0, 0.148, 0, 0.006, 0)
+material_override = ExtResource("1_abih6")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_Screen" type="MeshInstance3D" parent="." unique_id=343276564]
+transform = Transform3D(0.064, 0, 0, 0, 0.002, 0, 0, 0, 0.136, 0, 0.0125, 0)
+material_override = ExtResource("2_ojfho")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B2_CameraBump" type="MeshInstance3D" parent="." unique_id=1602266510]
+transform = Transform3D(0.026, 0, 0, 0, 0.005, 0, 0, 0, 0.026, -0.022, 0.0145, -0.056)
+material_override = ExtResource("1_abih6")
+mesh = SubResource("BoxMesh_dsxwc")

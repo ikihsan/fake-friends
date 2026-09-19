@@ -1,0 +1,29 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_metal.tres" id="1_b8ki3"]
+[ext_resource type="Material" path="res://materials/mat_lamp_glow.tres" id="2_rtdhw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[node name="wall_lamp_ext" type="Node3D" unique_id=1684305364]
+
+[node name="B0_Bracket" type="MeshInstance3D" parent="." unique_id=1522316701]
+transform = Transform3D(0.06, 0, 0, 0, 0.06, 0, 0, 0, 0.1, 0, 0.08, -0.05)
+material_override = ExtResource("1_b8ki3")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_Housing" type="MeshInstance3D" parent="." unique_id=532267464]
+transform = Transform3D(0.2, 0, 0, 0, 0.1, 0, 0, 0, 0.18, 0, 0, 0.05)
+material_override = ExtResource("1_b8ki3")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B2_Lens" type="MeshInstance3D" parent="." unique_id=957954419]
+transform = Transform3D(0.17, 0, 0, 0, 0.03, 0, 0, 0, 0.15, 0, -0.06, 0.05)
+material_override = ExtResource("2_rtdhw")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="O0" type="OmniLight3D" parent="." unique_id=941671489]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22, 0.12)
+light_color = Color(1, 0.88, 0.72, 1)
+light_energy = 1.4
+omni_range = 7.0

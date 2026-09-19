@@ -1,0 +1,54 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_wood.tres" id="1_vvjgw"]
+[ext_resource type="Material" path="res://materials/mat_door.tres" id="2_rlv8a"]
+[ext_resource type="Material" path="res://materials/mat_dark.tres" id="3_wxqjr"]
+[ext_resource type="Material" path="res://materials/mat_metal.tres" id="4_v44o2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n46cq"]
+size = Vector3(1.24, 2.04, 0.62)
+
+[node name="wardrobe_unit" type="Node3D" unique_id=107252643]
+
+[node name="B0_Carcass" type="MeshInstance3D" parent="." unique_id=316392338]
+transform = Transform3D(1.2, 0, 0, 0, 2, 0, 0, 0, 0.6, 0, 1, 0)
+material_override = ExtResource("1_vvjgw")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_Top" type="MeshInstance3D" parent="." unique_id=1561647252]
+transform = Transform3D(1.24, 0, 0, 0, 0.04, 0, 0, 0, 0.62, 0, 2.02, 0)
+material_override = ExtResource("1_vvjgw")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B2_DoorL" type="MeshInstance3D" parent="." unique_id=1044529652]
+transform = Transform3D(0.58, 0, 0, 0, 1.9, 0, 0, 0, 0.03, -0.29, 1, 0.31)
+material_override = ExtResource("2_rlv8a")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B3_DoorR" type="MeshInstance3D" parent="." unique_id=1381521105]
+transform = Transform3D(0.58, 0, 0, 0, 1.9, 0, 0, 0, 0.03, 0.29, 1, 0.31)
+material_override = ExtResource("2_rlv8a")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B4_DoorGap" type="MeshInstance3D" parent="." unique_id=2040354944]
+transform = Transform3D(0.014, 0, 0, 0, 1.86, 0, 0, 0, 0.004, 0, 1, 0.325)
+material_override = ExtResource("3_wxqjr")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B5_HandleL" type="MeshInstance3D" parent="." unique_id=681431325]
+transform = Transform3D(0.02, 0, 0, 0, 0.16, 0, 0, 0, 0.03, 0.06, 1.05, 0.34)
+material_override = ExtResource("4_v44o2")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B6_HandleR" type="MeshInstance3D" parent="." unique_id=75219674]
+transform = Transform3D(0.02, 0, 0, 0, 0.16, 0, 0, 0, 0.03, -0.06, 1.05, 0.34)
+material_override = ExtResource("4_v44o2")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=813936130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision" unique_id=304484253]
+shape = SubResource("BoxShape3D_n46cq")

@@ -1,0 +1,44 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_wood.tres" id="1_bq151"]
+[ext_resource type="Material" path="res://materials/mat_paper.tres" id="2_7y24a"]
+[ext_resource type="Material" path="res://materials/mat_photo.tres" id="3_ae5s7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[node name="photo_frame" type="Node3D" unique_id=402246671]
+
+[node name="B0_FrameTop" type="MeshInstance3D" parent="." unique_id=326679499]
+transform = Transform3D(0.62, 0, 0, 0, 0.05, 0, 0, 0, 0.035, 0, 0.205, 0)
+material_override = ExtResource("1_bq151")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_FrameBottom" type="MeshInstance3D" parent="." unique_id=616173699]
+transform = Transform3D(0.62, 0, 0, 0, 0.05, 0, 0, 0, 0.035, 0, -0.205, 0)
+material_override = ExtResource("1_bq151")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B2_FrameLeft" type="MeshInstance3D" parent="." unique_id=654632301]
+transform = Transform3D(0.05, 0, 0, 0, 0.36, 0, 0, 0, 0.035, -0.285, 0, 0)
+material_override = ExtResource("1_bq151")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B3_FrameRight" type="MeshInstance3D" parent="." unique_id=335784755]
+transform = Transform3D(0.05, 0, 0, 0, 0.36, 0, 0, 0, 0.035, 0.285, 0, 0)
+material_override = ExtResource("1_bq151")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B4_Backing" type="MeshInstance3D" parent="." unique_id=1166431386]
+transform = Transform3D(0.56, 0, 0, 0, 0.4, 0, 0, 0, 0.012, 0, 0, -0.012)
+material_override = ExtResource("1_bq151")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B5_Mount" type="MeshInstance3D" parent="." unique_id=489828038]
+transform = Transform3D(0.53, 0, 0, 0, 0.37, 0, 0, 0, 0.006, 0, 0, 0.008)
+material_override = ExtResource("2_7y24a")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B6_Photo" type="MeshInstance3D" parent="." unique_id=263024805]
+transform = Transform3D(0.4, 0, 0, 0, 0.3, 0, 0, 0, 0.004, 0, 0.005, 0.013)
+material_override = ExtResource("3_ae5s7")
+mesh = SubResource("BoxMesh_dsxwc")

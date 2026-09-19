@@ -1,0 +1,44 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_fabric.tres" id="1_0fg43"]
+[ext_resource type="Material" path="res://materials/mat_bedding.tres" id="2_q23m6"]
+[ext_resource type="Material" path="res://materials/mat_towel.tres" id="3_ws7ub"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xvor7"]
+size = Vector3(0.3, 0.09, 0.28)
+
+[sub_resource type="BoxMesh" id="BoxMesh_br7m0"]
+size = Vector3(0.22, 0.07, 0.22)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i8tw2"]
+size = Vector3(0.44, 0.66, 0.44)
+
+[node name="laundry_basket" type="Node3D" unique_id=2058433039]
+
+[node name="B0_Body" type="MeshInstance3D" parent="." unique_id=2075164402]
+transform = Transform3D(0.38, 0, 0, 0, 0.6, 0, 0, 0, 0.38, 0, 0.3, 0)
+material_override = ExtResource("1_0fg43")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_RimFold" type="MeshInstance3D" parent="." unique_id=388247564]
+transform = Transform3D(0.42, 0, 0, 0, 0.06, 0, 0, 0, 0.42, 0, 0.61, 0)
+material_override = ExtResource("1_0fg43")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B2_Clothes1" type="MeshInstance3D" parent="." unique_id=661716868]
+transform = Transform3D(0.99026805, 0, 0.1391731, 0, 1, 0, -0.1391731, 0, 0.99026805, 0, 0.66, 0.02)
+material_override = ExtResource("2_q23m6")
+mesh = SubResource("BoxMesh_xvor7")
+
+[node name="B3_Clothes2" type="MeshInstance3D" parent="." unique_id=1985781052]
+transform = Transform3D(0.9702957, 0, -0.2419219, 0, 1, 0, 0.2419219, 0, 0.9702957, -0.02, 0.7, -0.03)
+material_override = ExtResource("3_ws7ub")
+mesh = SubResource("BoxMesh_br7m0")
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=831059978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33, 0)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision" unique_id=1470642051]
+shape = SubResource("BoxShape3D_i8tw2")

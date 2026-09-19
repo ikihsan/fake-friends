@@ -1,0 +1,40 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_curtain.tres" id="1_4gm7g"]
+[ext_resource type="Material" path="res://materials/mat_metal.tres" id="2_v5n7g"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bo0oy"]
+top_radius = 0.012
+bottom_radius = 0.012
+height = 1.0
+radial_segments = 12
+rings = 1
+
+[node name="shower_curtain" type="Node3D" unique_id=1933896433]
+
+[node name="B0_Fold1" type="MeshInstance3D" parent="." unique_id=1252293145]
+transform = Transform3D(0.16, 0, 0, 0, 1.88, 0, 0, 0, 0.018, 0.05, -0.95, 0.012)
+material_override = ExtResource("1_4gm7g")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_Fold2" type="MeshInstance3D" parent="." unique_id=1054078106]
+transform = Transform3D(0.16, 0, 0, 0, 1.88, 0, 0, 0, 0.018, 0.22, -0.95, -0.012)
+material_override = ExtResource("1_4gm7g")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B2_Fold3" type="MeshInstance3D" parent="." unique_id=1247800894]
+transform = Transform3D(0.16, 0, 0, 0, 1.88, 0, 0, 0, 0.018, 0.39, -0.95, 0.012)
+material_override = ExtResource("1_4gm7g")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B3_Hem" type="MeshInstance3D" parent="." unique_id=1699842702]
+transform = Transform3D(0.5, 0, 0, 0, 0.04, 0, 0, 0, 0.03, 0.22, -1.89, 0)
+material_override = ExtResource("1_4gm7g")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="C0_Rail" type="MeshInstance3D" parent="." unique_id=1077882393]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("2_v5n7g")
+mesh = SubResource("CylinderMesh_bo0oy")

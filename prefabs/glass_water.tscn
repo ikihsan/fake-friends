@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_glass.tres" id="1_fal56"]
+[ext_resource type="Material" path="res://materials/mat_water.tres" id="2_sf3vu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[node name="glass_water" type="Node3D" unique_id=834926578]
+
+[node name="B0_Glass" type="MeshInstance3D" parent="." unique_id=2124520982]
+transform = Transform3D(0.066, 0, 0, 0, 0.096, 0, 0, 0, 0.066, 0, 0.048, 0)
+material_override = ExtResource("1_fal56")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_Water" type="MeshInstance3D" parent="." unique_id=539342254]
+transform = Transform3D(0.058, 0, 0, 0, 0.058, 0, 0, 0, 0.058, 0, 0.036, 0)
+material_override = ExtResource("2_sf3vu")
+mesh = SubResource("BoxMesh_dsxwc")

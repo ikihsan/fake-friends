@@ -1,0 +1,34 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_paint_white.tres" id="1_13m8v"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[node name="paper_note" type="Node3D" unique_id=466471046]
+
+[node name="B0_Paper" type="MeshInstance3D" parent="." unique_id=1628110347]
+transform = Transform3D(0.3, 0, 0, 0, 0.4, 0, 0, 0, 0.006, 0, 0, 0)
+material_override = ExtResource("1_13m8v")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_TapeL" type="MeshInstance3D" parent="." unique_id=686308667]
+transform = Transform3D(0.07, 0, 0, 0, 0.05, 0, 0, 0, 0.003, -0.12, 0.185, 0.006)
+material_override = ExtResource("1_13m8v")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B2_TapeR" type="MeshInstance3D" parent="." unique_id=857541462]
+transform = Transform3D(0.07, 0, 0, 0, 0.05, 0, 0, 0, 0.003, 0.12, 0.185, 0.006)
+material_override = ExtResource("1_13m8v")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="L0" type="Label3D" parent="." unique_id=1452427237]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.01)
+pixel_size = 0.001
+double_sided = false
+modulate = Color(0.09, 0.07, 0.06, 1)
+text = "DON'T
+FORGET.
+READ THE
+HANDBOOK."
+font_size = 48
+outline_size = 0

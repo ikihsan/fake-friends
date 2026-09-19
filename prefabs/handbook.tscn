@@ -1,0 +1,49 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_book_cover.tres" id="1_b2x1j"]
+[ext_resource type="Material" path="res://materials/mat_paper.tres" id="2_j8bd1"]
+[ext_resource type="Material" path="res://materials/mat_book_cover_rust.tres" id="3_ooyny"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[node name="handbook" type="Node3D" unique_id=1623192121]
+
+[node name="B0_CoverBottom" type="MeshInstance3D" parent="." unique_id=1780147034]
+transform = Transform3D(0.17, 0, 0, 0, 0.008, 0, 0, 0, 0.24, 0, 0.004, 0)
+material_override = ExtResource("1_b2x1j")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_Pages" type="MeshInstance3D" parent="." unique_id=1871853319]
+transform = Transform3D(0.162, 0, 0, 0, 0.03, 0, 0, 0, 0.23, 0.003, 0.021, 0)
+material_override = ExtResource("2_j8bd1")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B2_PageEdge" type="MeshInstance3D" parent="." unique_id=1408116100]
+transform = Transform3D(0.006, 0, 0, 0, 0.026, 0, 0, 0, 0.226, 0.084, 0.021, 0)
+material_override = ExtResource("2_j8bd1")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B3_CoverTop" type="MeshInstance3D" parent="." unique_id=1121602414]
+transform = Transform3D(0.17, 0, 0, 0, 0.008, 0, 0, 0, 0.24, 0, 0.038, 0)
+material_override = ExtResource("1_b2x1j")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B4_Spine" type="MeshInstance3D" parent="." unique_id=204307200]
+transform = Transform3D(0.008, 0, 0, 0, 0.042, 0, 0, 0, 0.24, -0.082, 0.021, 0)
+material_override = ExtResource("1_b2x1j")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B5_BookmarkTab" type="MeshInstance3D" parent="." unique_id=1733094881]
+transform = Transform3D(0.024, 0, 0, 0, 0.004, 0, 0, 0, 0.062, 0.048, 0.042, -0.135)
+material_override = ExtResource("3_ooyny")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="L0" type="Label3D" parent="." unique_id=1539921304]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.008, 0.045, 0.012)
+pixel_size = 0.0008
+shaded = true
+double_sided = false
+modulate = Color(0.88, 0.87, 0.84, 1)
+text = "HANDBOOK"
+font_size = 48
+outline_size = 0

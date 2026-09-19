@@ -1,0 +1,35 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_ceramic.tres" id="1_lxfa8"]
+[ext_resource type="Material" path="res://materials/mat_dark.tres" id="2_oisbv"]
+[ext_resource type="Material" path="res://materials/mat_metal.tres" id="3_vfmra"]
+[ext_resource type="Material" path="res://materials/mat_fabric.tres" id="4_51m1h"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[node name="tray_items" type="Node3D" unique_id=1165420756]
+
+[node name="B0_Dish" type="MeshInstance3D" parent="." unique_id=1664736751]
+transform = Transform3D(0.12, 0, 0, 0, 0.024, 0, 0, 0, 0.12, 0, 0.012, 0)
+material_override = ExtResource("1_lxfa8")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_DishInner" type="MeshInstance3D" parent="." unique_id=2099228218]
+transform = Transform3D(0.1, 0, 0, 0, 0.01, 0, 0, 0, 0.1, 0, 0.02, 0)
+material_override = ExtResource("2_oisbv")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B2_Watch" type="MeshInstance3D" parent="." unique_id=643159103]
+transform = Transform3D(0.032, 0, 0, 0, 0.012, 0, 0, 0, 0.032, 0.012, 0.03, 0.004)
+material_override = ExtResource("3_vfmra")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B3_WatchStrap" type="MeshInstance3D" parent="." unique_id=455525839]
+transform = Transform3D(0.02, 0, 0, 0, 0.008, 0, 0, 0, 0.03, 0.012, 0.03, 0.03)
+material_override = ExtResource("4_51m1h")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B4_Ring" type="MeshInstance3D" parent="." unique_id=1948133731]
+transform = Transform3D(0.018, 0, 0, 0, 0.004, 0, 0, 0, 0.018, -0.03, 0.028, -0.022)
+material_override = ExtResource("3_vfmra")
+mesh = SubResource("BoxMesh_dsxwc")

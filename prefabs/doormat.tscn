@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_fabric.tres" id="1_j0w2c"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[node name="doormat" type="Node3D" unique_id=2007596766]
+
+[node name="B0_Mat" type="MeshInstance3D" parent="." unique_id=158691744]
+transform = Transform3D(0.6, 0, 0, 0, 0.03, 0, 0, 0, 0.9, 0, 0.015, 0)
+material_override = ExtResource("1_j0w2c")
+mesh = SubResource("BoxMesh_dsxwc")

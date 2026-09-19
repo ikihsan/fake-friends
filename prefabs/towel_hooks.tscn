@@ -1,0 +1,33 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_metal.tres" id="1_ve54r"]
+[ext_resource type="Material" path="res://materials/mat_towel.tres" id="2_migjy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[node name="towel_hooks" type="Node3D" unique_id=1496800172]
+
+[node name="B0_Rail" type="MeshInstance3D" parent="." unique_id=1948123274]
+transform = Transform3D(0.5, 0, 0, 0, 0.03, 0, 0, 0, 0.06, 0, 0, 0)
+material_override = ExtResource("1_ve54r")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_Towel1Fold" type="MeshInstance3D" parent="." unique_id=1249499041]
+transform = Transform3D(0.2, 0, 0, 0, 0.06, 0, 0, 0, 0.03, -0.12, -0.02, 0.06)
+material_override = ExtResource("2_migjy")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B2_Towel1" type="MeshInstance3D" parent="." unique_id=1961332463]
+transform = Transform3D(0.2, 0, 0, 0, 0.72, 0, 0, 0, 0.02, -0.12, -0.36, 0.05)
+material_override = ExtResource("2_migjy")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B3_Towel2Fold" type="MeshInstance3D" parent="." unique_id=41571657]
+transform = Transform3D(0.16, 0, 0, 0, 0.08, 0, 0, 0, 0.03, 0.15, -0.04, 0.06)
+material_override = ExtResource("2_migjy")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B4_Towel2" type="MeshInstance3D" parent="." unique_id=549239627]
+transform = Transform3D(0.16, 0, 0, 0, 0.36, 0, 0, 0, 0.02, 0.15, -0.18, 0.05)
+material_override = ExtResource("2_migjy")
+mesh = SubResource("BoxMesh_dsxwc")

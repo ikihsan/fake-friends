@@ -1,0 +1,33 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_wood.tres" id="1_q2c63"]
+[ext_resource type="Material" path="res://materials/mat_mirror.tres" id="2_v18d3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[node name="mirror_full" type="Node3D" unique_id=554891689]
+
+[node name="B0_FrameTop" type="MeshInstance3D" parent="." unique_id=1861048571]
+transform = Transform3D(0.84, 0, 0, 0, 0.06, 0, 0, 0, 0.05, 0, 0.9, 0)
+material_override = ExtResource("1_q2c63")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_FrameBottom" type="MeshInstance3D" parent="." unique_id=543748308]
+transform = Transform3D(0.84, 0, 0, 0, 0.06, 0, 0, 0, 0.05, 0, -0.9, 0)
+material_override = ExtResource("1_q2c63")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B2_FrameL" type="MeshInstance3D" parent="." unique_id=1298918256]
+transform = Transform3D(0.06, 0, 0, 0, 1.74, 0, 0, 0, 0.05, -0.4, 0, 0)
+material_override = ExtResource("1_q2c63")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B3_FrameR" type="MeshInstance3D" parent="." unique_id=1042734489]
+transform = Transform3D(0.06, 0, 0, 0, 1.74, 0, 0, 0, 0.05, 0.4, 0, 0)
+material_override = ExtResource("1_q2c63")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B4_Glass" type="MeshInstance3D" parent="." unique_id=428767047]
+transform = Transform3D(0.72, 0, 0, 0, 1.72, 0, 0, 0, 0.008, 0, 0, 0.012)
+material_override = ExtResource("2_v18d3")
+mesh = SubResource("BoxMesh_dsxwc")

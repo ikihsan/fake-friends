@@ -1,0 +1,38 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_plastic.tres" id="1_opvfp"]
+[ext_resource type="Material" path="res://materials/mat_plastic_dark.tres" id="2_pj65f"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsxwc"]
+
+[node name="charging_cable" type="Node3D" unique_id=1772546800]
+
+[node name="B0_Plug" type="MeshInstance3D" parent="." unique_id=268020581]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.048, 0, 0.018, -0.09)
+material_override = ExtResource("1_opvfp")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B1_Cable0" type="MeshInstance3D" parent="." unique_id=1448927084]
+transform = Transform3D(0.011, 0, 0, 0, 0.01, 0, 0, 0, 0.14, 0, 0.006, -0.02)
+material_override = ExtResource("2_pj65f")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B2_Cable1" type="MeshInstance3D" parent="." unique_id=418013615]
+transform = Transform3D(0.1, 0, 0, 0, 0.01, 0, 0, 0, 0.011, 0.045, 0.006, 0.055)
+material_override = ExtResource("2_pj65f")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B3_Cable2" type="MeshInstance3D" parent="." unique_id=860488777]
+transform = Transform3D(0.011, 0, 0, 0, 0.01, 0, 0, 0, 0.13, 0.088, 0.006, 0.115)
+material_override = ExtResource("2_pj65f")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B4_Cable3" type="MeshInstance3D" parent="." unique_id=1757008102]
+transform = Transform3D(0.092, 0, 0, 0, 0.01, 0, 0, 0, 0.011, 0.048, 0.006, 0.172)
+material_override = ExtResource("2_pj65f")
+mesh = SubResource("BoxMesh_dsxwc")
+
+[node name="B5_Connector" type="MeshInstance3D" parent="." unique_id=1989299759]
+transform = Transform3D(0.018, 0, 0, 0, 0.01, 0, 0, 0, 0.026, 0.002, 0.006, 0.215)
+material_override = ExtResource("2_pj65f")
+mesh = SubResource("BoxMesh_dsxwc")
