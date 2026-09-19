@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="FFHandbookPage" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/gameplay/state/handbook_page.gd" id="1"]
+[resource]
+script = ExtResource("1")
+page_id = "tomorrow_plan"
+title = "Tomorrow's Plan"
+kind = "plan"
+entries = {"plan.day_2.cafe": "Meet Sofia and Bobby at Cafe Caffeine."}
