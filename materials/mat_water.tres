@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=1 format=3]
+
+
+[resource]
+resource_name = "mat_water"
+albedo_color = Color(0.72, 0.84, 0.86, 0.45)
+roughness = 0.05
+transparency = 1
+cull_mode = 2

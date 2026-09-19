@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://textures/fabric_weave.png" id="1_albedo"]
+[ext_resource type="Texture2D" path="res://textures/fabric_weave_n.png" id="2_normal"]
+
+[resource]
+resource_name = "mat_bedding_warm"
+albedo_color = Color(0.78, 0.72, 0.66, 1.0)
+albedo_texture = ExtResource("1_albedo")
+normal_enabled = true
+normal_texture = ExtResource("2_normal")
+normal_scale = 0.30
+roughness = 0.95
