@@ -206,6 +206,11 @@ func _render_page() -> void:
 		for entry_id: String in overrides:
 			if entries.has(entry_id) or entry_id.begins_with(page_id + "."):
 				entries[entry_id] = overrides[entry_id]
+			elif kind == "plan" and entry_id.begins_with("plan."):
+				# Tomorrow's Plan collects every plan.* runtime entry (e.g. the
+				# Day 1 Maxwell invite), so story additions appear without a
+				# second discovery path. Person pages stay strictly page_id.*.
+				entries[entry_id] = overrides[entry_id]
 	var lines: PackedStringArray = []
 	var struck: Dictionary = saved.get("struck_entries", {})
 	for entry_id: String in entries:

@@ -69,6 +69,33 @@ func strike_entry(entry_id: String, struck: bool = true) -> bool:
 	save_game()
 	return true
 
+## Story-system writes (Maxwell on Day 1, future scripted events). These bypass
+## the Day 1 player read-only guard on purpose: the PLAYER cannot write on Day 1,
+## but the WORLD can leave marks he finds later. Idempotent: same id+text never
+## duplicates, reload-safe. Uses the same runtime layer (handbook_entries /
+## struck_entries), never mutates source .tres resources.
+## Stable Day 1 IDs:
+##   "plan.day_2.cafe" (source) -> struck complete
+##   "plan.day_2.maxwell_party" -> "Join Maxwell's home party."
+##   "maria.loves_me" -> "Maria loves me."
+func story_write_entry(entry_id: String, text: String) -> bool:
+	if entry_id.is_empty():
+		return false
+	if str(data["handbook_entries"].get(entry_id, "")) == text:
+		return true
+	data["handbook_entries"][entry_id] = text
+	save_game()
+	return true
+
+func story_strike_entry(entry_id: String, struck: bool = true) -> bool:
+	if entry_id.is_empty():
+		return false
+	if data["struck_entries"].get(entry_id, false) == struck:
+		return true
+	data["struck_entries"][entry_id] = struck
+	save_game()
+	return true
+
 func set_plan_completed(day: int, completed: bool = true) -> void:
 	data["plan_completion"][str(maxi(1, day))] = completed
 	save_game()
