@@ -69,6 +69,51 @@ func strike_entry(entry_id: String, struck: bool = true) -> bool:
 	save_game()
 	return true
 
+## Day transition. Advances the persistent day clock and saves immediately so a
+## reload lands on the new day. Completed-day flags remain as history.
+func advance_day(day: int) -> void:
+	data["current_day"] = maxi(1, day)
+	save_game()
+
+## One-expensive-write authority (Day 2+). The PLAYER gets exactly one permanent
+## handbook action per day: one judgment OR one strike, never both. Story writes
+## (story_write_entry) and automatic plan strikes never touch this quota.
+const JUDGMENT_PEOPLE: Array[String] = ["sofia", "maxwell", "maria", "bobby"]
+const JUDGMENT_WORDS: Array[String] = ["TRUST", "DON'T TRUST", "UNSURE"]
+
+func can_use_permanent_write() -> bool:
+	if int(data["current_day"]) < 2:
+		return false
+	return data["permanent_writing_used"].get(str(int(data["current_day"])), false) != true
+
+func _consume_permanent_write() -> void:
+	data["permanent_writing_used"][str(int(data["current_day"]))] = true
+	save_game()
+
+## Add (or first-set) one classification judgment about a friend. Consumes the
+## day's write. Returns false when unavailable, unknown person, or bad wording.
+func player_write_judgment(person_id: String, text: String) -> bool:
+	if not can_use_permanent_write():
+		return false
+	if not JUDGMENT_PEOPLE.has(person_id):
+		return false
+	if not JUDGMENT_WORDS.has(text):
+		return false
+	data["judgments"][person_id] = text
+	_consume_permanent_write()
+	return true
+
+## Strike one persistent statement. Consumes the day's write. The text stays
+## readable (rendered crossed out); nothing is deleted.
+func player_strike_entry(entry_id: String) -> bool:
+	if not can_use_permanent_write():
+		return false
+	if entry_id.is_empty():
+		return false
+	data["struck_entries"][entry_id] = true
+	_consume_permanent_write()
+	return true
+
 ## Story-system writes (Maxwell on Day 1, future scripted events). These bypass
 ## the Day 1 player read-only guard on purpose: the PLAYER cannot write on Day 1,
 ## but the WORLD can leave marks he finds later. Idempotent: same id+text never
