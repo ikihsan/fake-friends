@@ -19,6 +19,16 @@ var _folio: Label
 var _previous: Button
 var _next: Button
 var _close: Button
+var _actions: HBoxContainer
+var _write_btn: Button
+var _strike_btn: Button
+var _chooser: VBoxContainer
+var _chooser_label: Label
+var _confirm: VBoxContainer
+var _confirm_label: Label
+var _pending_kind: String = ""
+var _pending_value: String = ""
+var _pending_person: String = ""
 var _state: Node
 var _local_plan_seen: bool = false
 var _old_focus: WeakRef
@@ -79,6 +89,11 @@ func _input(event: InputEvent) -> void:
 	if not is_open:
 		return
 	if event.is_action_pressed("book_close"):
+		# Esc backs out of the write flow first; the book itself stays open.
+		if _confirm.visible or _chooser.visible:
+			_hide_write_flow()
+			get_viewport().set_input_as_handled()
+			return
 		close_book()
 	elif event.is_action_pressed("page_next"):
 		_turn(1)
@@ -137,6 +152,7 @@ func _build() -> void:
 	column.add_child(_body)
 	_folio = _make_label("", 16)
 	column.add_child(_folio)
+	_build_write_flow(column)
 	var navigation: HBoxContainer = HBoxContainer.new()
 	navigation.add_theme_constant_override("separation", 12)
 	column.add_child(navigation)
@@ -194,23 +210,11 @@ func _render_page() -> void:
 	_title.text = str(page.get("title"))
 	var page_id: String = str(page.get("page_id"))
 	var kind: String = str(page.get("kind"))
-	var entries: Dictionary = (page.get("entries") as Dictionary).duplicate(true)
+	var entries: Dictionary = _displayed_entries()
 	var saved: Dictionary = StateScript.default_data()
 	if _state != null:
 		saved = _state.get("data")
 	_sketch.visible = kind == "map"
-	if kind == "map":
-		entries = saved.get("landmarks", {"apartment": "Apartment"}).duplicate(true)
-	else:
-		var overrides: Dictionary = saved.get("handbook_entries", {})
-		for entry_id: String in overrides:
-			if entries.has(entry_id) or entry_id.begins_with(page_id + "."):
-				entries[entry_id] = overrides[entry_id]
-			elif kind == "plan" and entry_id.begins_with("plan."):
-				# Tomorrow's Plan collects every plan.* runtime entry (e.g. the
-				# Day 1 Maxwell invite), so story additions appear without a
-				# second discovery path. Person pages stay strictly page_id.*.
-				entries[entry_id] = overrides[entry_id]
 	var lines: PackedStringArray = []
 	var struck: Dictionary = saved.get("struck_entries", {})
 	for entry_id: String in entries:
@@ -220,11 +224,14 @@ func _render_page() -> void:
 		lines.append(prose)
 	var judgments: Dictionary = saved.get("judgments", {})
 	if judgments.has(page_id):
-		lines.append(str(judgments[page_id]).replace("[", "[lb]"))
+		# Permanent hand: same paper, slightly warmer ink, slanted.
+		lines.append("[color=#6b4a2f][i]" + str(judgments[page_id]).replace("[", "[lb]") + "[/i][/color]")
 	_body.text = "\n\n".join(lines)
 	if _state != null:
 		_state.call("mark_handbook_read", page_id, entries.keys())
 	_day2_beats(page_id, kind, entries, saved)
+	_hide_write_flow()
+	_refresh_actions(page_id, kind)
 	_folio.text = "%02d / %02d" % [_page_index + 1, pages.size()]
 	_previous.disabled = _page_index == 0
 	_next.disabled = _page_index == pages.size() - 1
@@ -250,3 +257,175 @@ func _day2_beats(page_id: String, kind: String, entries: Dictionary, saved: Dict
 		thought_requested.emit("Maria...?")
 		thought_requested.emit("I don't remember finding that out.")
 		thought_requested.emit("That's why I write things down.")
+
+## The statements as currently displayed on this page (base text + runtime
+## overrides). Shared by rendering and by strike eligibility so the two can
+## never disagree about what is on the page.
+func _displayed_entries() -> Dictionary:
+	if pages.is_empty():
+		return {}
+	var page: Resource = pages[clampi(_page_index, 0, pages.size() - 1)]
+	var page_id: String = str(page.get("page_id"))
+	var kind: String = str(page.get("kind"))
+	var entries: Dictionary = (page.get("entries") as Dictionary).duplicate(true)
+	var saved: Dictionary = StateScript.default_data()
+	if _state != null:
+		saved = _state.get("data")
+	if kind == "map":
+		return saved.get("landmarks", {"apartment": "Apartment"}).duplicate(true)
+	var overrides: Dictionary = saved.get("handbook_entries", {})
+	for entry_id: String in overrides:
+		if entries.has(entry_id) or entry_id.begins_with(page_id + "."):
+			entries[entry_id] = overrides[entry_id]
+		elif kind == "plan" and entry_id.begins_with("plan."):
+			# Tomorrow's Plan collects every plan.* runtime entry (e.g. the
+			# Day 1 Maxwell invite), so story additions appear without a
+			# second discovery path. Person pages stay strictly page_id.*.
+			entries[entry_id] = overrides[entry_id]
+	return entries
+
+## Strikeable right now: persistent statements on friend pages only. Plan
+## completion is automatic story state (free), map labels and titles are
+## structural, judgments are classifications — none of those consume the write.
+func strike_candidates() -> Array[String]:
+	var out: Array[String] = []
+	if pages.is_empty():
+		return out
+	var page: Resource = pages[clampi(_page_index, 0, pages.size() - 1)]
+	if str(page.get("kind")) != "person":
+		return out
+	var struck: Dictionary = {}
+	if _state != null:
+		struck = (_state.get("data") as Dictionary).get("struck_entries", {})
+	for entry_id: String in _displayed_entries():
+		if struck.get(entry_id, false) != true:
+			out.append(entry_id)
+	return out
+
+func _build_write_flow(column: VBoxContainer) -> void:
+	_actions = HBoxContainer.new()
+	_actions.name = "WriteActions"
+	_actions.add_theme_constant_override("separation", 12)
+	column.add_child(_actions)
+	_write_btn = _make_button("Write", _actions, _on_write_pressed)
+	_strike_btn = _make_button("Strike out", _actions, _on_strike_pressed)
+	_chooser = VBoxContainer.new()
+	_chooser.name = "WriteChooser"
+	_chooser.add_theme_constant_override("separation", 6)
+	column.add_child(_chooser)
+	_chooser_label = _make_label("", 18)
+	_chooser.add_child(_chooser_label)
+	_confirm = VBoxContainer.new()
+	_confirm.name = "WriteConfirm"
+	_confirm.add_theme_constant_override("separation", 6)
+	column.add_child(_confirm)
+	_confirm_label = _make_label("", 20)
+	_confirm_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_confirm.add_child(_confirm_label)
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 12)
+	_confirm.add_child(row)
+	_make_button("Confirm", row, _on_write_confirmed)
+	_make_button("Cancel", row, _hide_write_flow)
+	_chooser.hide()
+	_confirm.hide()
+	_actions.hide()
+
+## One permanent action per day, shared by judgments and strikes. Hidden
+## entirely before Day 2 and on structural pages; disabled once spent.
+func _refresh_actions(page_id: String, kind: String) -> void:
+	if _actions == null:
+		return
+	var day_two: bool = _state != null and int((_state.get("data") as Dictionary).get("current_day", 1)) >= 2
+	if not day_two or kind != "person":
+		_actions.hide()
+		return
+	_actions.show()
+	var can: bool = bool(_state.call("can_use_permanent_write"))
+	_write_btn.disabled = not can
+	_strike_btn.disabled = not can or strike_candidates().is_empty()
+
+func _hide_write_flow() -> void:
+	_pending_kind = ""
+	_pending_value = ""
+	_pending_person = ""
+	if is_instance_valid(_chooser):
+		for child: Node in _chooser.get_children():
+			if child is Button:
+				(child as Button).queue_free()
+		_chooser.hide()
+	if is_instance_valid(_confirm):
+		_confirm.hide()
+
+func _on_write_pressed() -> void:
+	if _write_btn.disabled:
+		return
+	_show_word_chooser()
+
+func _on_strike_pressed() -> void:
+	if _strike_btn.disabled:
+		return
+	var candidates: Array[String] = strike_candidates()
+	if candidates.is_empty():
+		return
+	if candidates.size() == 1:
+		_show_strike_confirm(candidates[0])
+		return
+	_show_candidate_chooser(candidates)
+
+func _show_word_chooser() -> void:
+	_hide_write_flow()
+	_confirm.hide()
+	var page: Resource = pages[_page_index]
+	_pending_person = str(page.get("page_id"))
+	_chooser_label.text = "Write about " + str(page.get("title")) + ":"
+	for word: String in StateScript.JUDGMENT_WORDS:
+		var option: Button = _make_button(word, _chooser, _on_word_chosen.bind(word))
+		option.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_chooser.show()
+	(_chooser.get_children().back() as Button).grab_focus()
+
+func _show_candidate_chooser(candidates: Array[String]) -> void:
+	_hide_write_flow()
+	_confirm.hide()
+	_chooser_label.text = "Strike out:"
+	var shown: Dictionary = _displayed_entries()
+	for entry_id: String in candidates:
+		var label_text: String = str(shown.get(entry_id, entry_id))
+		if label_text.length() > 90:
+			label_text = label_text.left(90) + "…"
+		var option: Button = _make_button(label_text, _chooser, _on_candidate_chosen.bind(entry_id))
+		option.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_chooser.show()
+
+func _on_word_chosen(word: String) -> void:
+	_pending_kind = "judgment"
+	_pending_value = word
+	var page: Resource = pages[_page_index]
+	_confirm_label.text = "Write \"" + word + "\" about " + str(page.get("title")) + "?"
+	_chooser.hide()
+	_confirm.show()
+
+func _on_candidate_chosen(entry_id: String) -> void:
+	_show_strike_confirm(entry_id)
+
+func _show_strike_confirm(entry_id: String) -> void:
+	_hide_write_flow()
+	_pending_kind = "strike"
+	_pending_value = entry_id
+	var label_text: String = str(_displayed_entries().get(entry_id, entry_id))
+	if label_text.length() > 140:
+		label_text = label_text.left(140) + "…"
+	_confirm_label.text = "Strike out \"" + label_text + "\"?"
+	_confirm.show()
+
+func _on_write_confirmed() -> void:
+	if _state == null or _pending_kind.is_empty():
+		_hide_write_flow()
+		return
+	if _pending_kind == "judgment":
+		_state.call("player_write_judgment", _pending_person, _pending_value)
+	elif _pending_kind == "strike":
+		_state.call("player_strike_entry", _pending_value)
+	_render_page()
+	_close.grab_focus()
