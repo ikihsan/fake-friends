@@ -1,0 +1,44 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_plant.tres" id="1_xkmgf"]
+[ext_resource type="Material" path="res://materials/mat_wood.tres" id="2_kgp4i"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_r0wsn"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yunjc"]
+top_radius = 0.13
+bottom_radius = 0.13
+height = 2.6
+radial_segments = 12
+rings = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5lals"]
+size = Vector3(0.3, 2.6, 0.3)
+
+[node name="nb_tree" type="Node3D" unique_id=2084927163]
+
+[node name="Canopy0" type="MeshInstance3D" parent="." unique_id=1559208731]
+transform = Transform3D(2.4, 0, 0, 0, 0.9, 0, 0, 0, 2.4, 0, 2.85, 0)
+material_override = ExtResource("1_xkmgf")
+mesh = SubResource("BoxMesh_r0wsn")
+
+[node name="Canopy1" type="MeshInstance3D" parent="." unique_id=1111361323]
+transform = Transform3D(1.7, 0, 0, 0, 0.7, 0, 0, 0, 1.7, -0.35, 3.35, 0.2)
+material_override = ExtResource("1_xkmgf")
+mesh = SubResource("BoxMesh_r0wsn")
+
+[node name="Canopy2" type="MeshInstance3D" parent="." unique_id=546805557]
+transform = Transform3D(1.3, 0, 0, 0, 0.6, 0, 0, 0, 1.3, 0.4, 3.6, -0.25)
+material_override = ExtResource("1_xkmgf")
+mesh = SubResource("BoxMesh_r0wsn")
+
+[node name="Trunk" type="MeshInstance3D" parent="." unique_id=1085247711]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+material_override = ExtResource("2_kgp4i")
+mesh = SubResource("CylinderMesh_yunjc")
+
+[node name="Body4" type="StaticBody3D" parent="." unique_id=1335700485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+
+[node name="Shape" type="CollisionShape3D" parent="Body4" unique_id=2039447450]
+shape = SubResource("BoxShape3D_5lals")

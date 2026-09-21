@@ -1,0 +1,34 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_metal.tres" id="1_s7phq"]
+[ext_resource type="Material" path="res://materials/mat_metal_dark.tres" id="2_8i67i"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_r0wsn"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_quqky"]
+top_radius = 0.24
+bottom_radius = 0.24
+height = 0.84
+radial_segments = 12
+rings = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iafah"]
+size = Vector3(0.52, 0.84, 0.52)
+
+[node name="nb_bin" type="Node3D" unique_id=1713368151]
+
+[node name="Lid" type="MeshInstance3D" parent="." unique_id=1220837266]
+transform = Transform3D(0.56, 0, 0, 0, 0.08, 0, 0, 0, 0.56, 0, 0.87, 0)
+material_override = ExtResource("1_s7phq")
+mesh = SubResource("BoxMesh_r0wsn")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=637631672]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, 0)
+material_override = ExtResource("2_8i67i")
+mesh = SubResource("CylinderMesh_quqky")
+
+[node name="Body2" type="StaticBody3D" parent="." unique_id=8865200]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, 0)
+
+[node name="Shape" type="CollisionShape3D" parent="Body2" unique_id=1210049719]
+shape = SubResource("BoxShape3D_iafah")

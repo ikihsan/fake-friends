@@ -1,0 +1,54 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_wood_light.tres" id="1_gw338"]
+[ext_resource type="Material" path="res://materials/mat_wood.tres" id="2_lfxcw"]
+[ext_resource type="Material" path="res://materials/mat_fabric.tres" id="3_itbcd"]
+[ext_resource type="Material" path="res://materials/mat_metal_dark.tres" id="4_hhddw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_r0wsn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_davcc"]
+size = Vector3(2.2, 1, 0.7)
+
+[node name="nb_stall" type="Node3D" unique_id=1513139748]
+
+[node name="Counter" type="MeshInstance3D" parent="." unique_id=1482323377]
+transform = Transform3D(2.2, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0.9, 0)
+material_override = ExtResource("1_gw338")
+mesh = SubResource("BoxMesh_r0wsn")
+
+[node name="Front" type="MeshInstance3D" parent="." unique_id=7310126]
+transform = Transform3D(2.2, 0, 0, 0, 0.9, 0, 0, 0, 0.06, 0, 0.45, 0.48)
+material_override = ExtResource("2_lfxcw")
+mesh = SubResource("BoxMesh_r0wsn")
+
+[node name="Roof" type="MeshInstance3D" parent="." unique_id=270091703]
+transform = Transform3D(2.6, 0, 0, 0, 0.08, 0, 0, 0, 1.6, 0, 2.2, 0)
+material_override = ExtResource("3_itbcd")
+mesh = SubResource("BoxMesh_r0wsn")
+
+[node name="PostW" type="MeshInstance3D" parent="." unique_id=598142636]
+transform = Transform3D(0.08, 0, 0, 0, 2.2, 0, 0, 0, 0.08, -1.2, 1.1, 0.7)
+material_override = ExtResource("4_hhddw")
+mesh = SubResource("BoxMesh_r0wsn")
+
+[node name="PostE" type="MeshInstance3D" parent="." unique_id=818456931]
+transform = Transform3D(0.08, 0, 0, 0, 2.2, 0, 0, 0, 0.08, 1.2, 1.1, 0.7)
+material_override = ExtResource("4_hhddw")
+mesh = SubResource("BoxMesh_r0wsn")
+
+[node name="CrateA" type="MeshInstance3D" parent="." unique_id=1882510809]
+transform = Transform3D(0.5, 0, 0, 0, 0.26, 0, 0, 0, 0.4, -0.55, 1.08, -0.1)
+material_override = ExtResource("1_gw338")
+mesh = SubResource("BoxMesh_r0wsn")
+
+[node name="CrateB" type="MeshInstance3D" parent="." unique_id=764075346]
+transform = Transform3D(0.5, 0, 0, 0, 0.26, 0, 0, 0, 0.4, 0.6, 1.08, -0.1)
+material_override = ExtResource("1_gw338")
+mesh = SubResource("BoxMesh_r0wsn")
+
+[node name="Body7" type="StaticBody3D" parent="." unique_id=684696922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.2)
+
+[node name="Shape" type="CollisionShape3D" parent="Body7" unique_id=1978466434]
+shape = SubResource("BoxShape3D_davcc")

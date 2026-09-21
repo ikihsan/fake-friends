@@ -1,0 +1,51 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://materials/mat_wood_light.tres" id="1_gkxar"]
+[ext_resource type="Material" path="res://materials/mat_metal_dark.tres" id="2_ugwqi"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_enxwn"]
+top_radius = 0.42
+bottom_radius = 0.42
+height = 0.06
+radial_segments = 12
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tpbtd"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.72
+radial_segments = 12
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ujirw"]
+top_radius = 0.24
+bottom_radius = 0.24
+height = 0.05
+radial_segments = 12
+rings = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lg875"]
+size = Vector3(0.84, 0.12, 0.84)
+
+[node name="nb_table" type="Node3D" unique_id=611638825]
+
+[node name="Top" type="MeshInstance3D" parent="." unique_id=2058614561]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74, 0)
+material_override = ExtResource("1_gkxar")
+mesh = SubResource("CylinderMesh_enxwn")
+
+[node name="Stem" type="MeshInstance3D" parent="." unique_id=729550772]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38, 0)
+material_override = ExtResource("2_ugwqi")
+mesh = SubResource("CylinderMesh_tpbtd")
+
+[node name="Base" type="MeshInstance3D" parent="." unique_id=1034051730]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03, 0)
+material_override = ExtResource("2_ugwqi")
+mesh = SubResource("CylinderMesh_ujirw")
+
+[node name="Body3" type="StaticBody3D" parent="." unique_id=1181740307]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74, 0)
+
+[node name="Shape" type="CollisionShape3D" parent="Body3" unique_id=970397231]
+shape = SubResource("BoxShape3D_lg875")
