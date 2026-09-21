@@ -1,7 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
-
+addons/godot_ai
 # Ziva AI agent editor tooling (not a project dependency; 1.5GB of native
 # binaries, several >100MB which GitHub rejects). Regenerated locally per machine.
 addons/ziva_agent/
