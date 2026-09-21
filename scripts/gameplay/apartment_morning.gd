@@ -73,8 +73,8 @@ func _ready() -> void:
 	wake.name = "WakeSequence"
 	add_child(wake)
 	wake.initialize(player)
-	wake.settled.connect(func() -> void: state.call("set_flag", "day1_awake", true))
-	print("Day 1 morning ready — preserved apartment; state day=", state.get("data")["current_day"])
+	wake.settled.connect(_on_wake_settled)
+	print("Day %d morning ready — preserved apartment; state day=" % int(state.get("data")["current_day"]), state.get("data")["current_day"])
 
 func _target(parent: Node3D, id: String, label: String, at: Vector3, extent: Vector3, callback: Callable) -> Target:
 	var target: Target = Target.new()
@@ -118,6 +118,13 @@ func _process(_delta: float) -> void:
 
 # The front door no longer ends the build: it opens straight onto the
 # neighbourhood, so there is nothing to trigger when Chris walks out.
+
+func _on_wake_settled() -> void:
+	# Day-aware awake marker; day1_awake stays exactly as Day 1 left it.
+	if int(state.get("data")["current_day"]) < 2:
+		state.call("set_flag", "day1_awake", true)
+	else:
+		state.call("set_flag", "day2_awake", true)
 
 func _say(text: String) -> void:
 	thoughts.say(text)

@@ -298,8 +298,6 @@ func _on_sleep(_hit: FFInteractable) -> void:
 	tw.tween_property(_fade, "color:a", 1.0, 1.4)
 	await tw.finished
 	state.call("set_flag", "day1_completed", true)
-	# Stay on Day 1 in the save (current_day untouched) so an incomplete Day 2
-	# can never load. The next slice advances the day at its own boundary.
 	_bed_target.enabled = false
 	if morning != null and morning.endpoint != null:
 		morning.endpoint.set_message(
@@ -307,3 +305,17 @@ func _on_sleep(_hit: FFInteractable) -> void:
 			"Chris is home. Tomorrow: Maxwell's house — UNO, drinks, Maria.",
 			"Rest")
 		morning.endpoint.open()
+		# Closing this overlay confirms the day: advance the persistent clock so
+		# Day 2 loads through the normal day architecture. One-shot, Day 1 only.
+		morning.endpoint.closed.connect(_on_complete_closed, CONNECT_ONE_SHOT)
+
+## Day 1 -> Day 2 transition. Runs once, after sleep is persisted. Completed Day 1
+## flags remain as history; Day 1 beats never replay because the bootstrap picks
+## the Day 2 layer from here on.
+func _on_complete_closed() -> void:
+	if not state.call("flag", "day1_completed"):
+		return
+	if int((state.get("data") as Dictionary).get("current_day", 1)) != 1:
+		return
+	state.call("advance_day", 2)
+	get_tree().call_deferred("reload_current_scene")

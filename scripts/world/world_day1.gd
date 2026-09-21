@@ -14,14 +14,13 @@ const DiscoveryScript = preload("res://scripts/world/discovery_service.gd")
 const DoorScript = preload("res://scripts/gameplay/interaction/door_open.gd")
 const AudioScript = preload("res://scripts/world/audio_director.gd")
 const StepsScript = preload("res://scripts/gameplay/player/footsteps.gd")
-const DirectorScript = preload("res://scripts/story/day1_director.gd")
+const BootstrapScript = preload("res://scripts/story/day_bootstrap.gd")
 
 var morning: FFApartmentMorning
 var neighborhood: Node3D
 var discovery: DiscoveryScript
 var audio: AudioScript
 var steps: StepsScript
-var director: Node
 var state: Node
 
 ## Development aid only: when set (X != 0) Chris starts at street level instead of
@@ -37,7 +36,7 @@ func _ready() -> void:
 	_audio()
 	_discovery()
 	_doors()
-	_day1_story()
+	_story()
 
 	# The apartment's floor is the ground plane of the whole world; tell the
 	# footstep system what that surface is called.
@@ -48,7 +47,7 @@ func _ready() -> void:
 	if dev_street_spawn != Vector3.ZERO:
 		_place_at_street()
 
-	print("Day 1 world ready — neighbourhood + apartment; known landmarks=",
+	print("Day %d world ready — neighbourhood + apartment; known landmarks=" % int((state.get("data") as Dictionary).get("current_day", 1)),
 		discovery.known_ids())
 
 func _place_at_street() -> void:
@@ -106,14 +105,13 @@ func _doors() -> void:
 		add_child(door)
 		door.initialize(cafe_door, 265.0)
 
-# ----------------------------------------------------------- Day 1 story ----
+# ----------------------------------------------------------- story layer ----
 
-## Day 1 playable story: Cafe Caffeine -> walk -> Market -> home.
-## Replaces the old development endpoint (order_coffee overlay) with the real
-## Sofia/Bobby/Maxwell staging. The room, counter and four-seat table are reused
-## as-is; this only adds actors and beats.
-func _day1_story() -> void:
-	director = DirectorScript.new()
-	director.name = "Day1Director"
-	add_child(director)
-	director.initialize(morning)
+## Day router: Day 1 keeps its completed director verbatim; Day 2+ gets its own
+## layer via FFDayBootstrap. The room, counter and four-seat table are reused
+## as-is; each director only adds actors and beats for its own day.
+func _story() -> void:
+	var bootstrap: Node = BootstrapScript.new()
+	bootstrap.name = "DayBootstrap"
+	add_child(bootstrap)
+	bootstrap.initialize(morning)

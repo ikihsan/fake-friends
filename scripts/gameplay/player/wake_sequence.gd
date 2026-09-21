@@ -33,7 +33,7 @@ func initialize(body: PlayerScript) -> void:
 	player.rotation.y = PI
 	player.camera.position = Vector3(0.0, 0.82, 0.0)
 	player.camera.look_at(Vector3(6.50, 1.34, 3.50))
-	_caption.text = "Day 1 · 7:00 AM"
+	_caption.text = "Day %d · 7:00 AM" % _current_day()
 	var tween: Tween = create_tween()
 	tween.tween_interval(0.35)
 	tween.tween_property(_fade, "color:a", 0.0, 1.2)
@@ -43,6 +43,13 @@ func _eyes_open() -> void:
 	transitioning = false
 	player.enabled = true
 	_caption.text = "7:00 AM     ·     Space — Get up"
+
+## The morning repeats; only the day number changes.
+func _current_day() -> int:
+	var gs: Node = get_node_or_null("/root/GameState")
+	if gs == null:
+		return 1
+	return maxi(1, int((gs.get("data") as Dictionary).get("current_day", 1)))
 
 ## Skip the wake-up altogether. Used by scenes that place Chris somewhere other
 ## than his bed (dev scenes now, a later "continue the day" load later): the body
