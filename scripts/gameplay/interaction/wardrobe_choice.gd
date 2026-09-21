@@ -27,6 +27,10 @@ func _choose(_target: Target, index: int) -> void:
 	_state.call("set_outfit", OUTFITS[index])
 	_refresh()
 	thought_requested.emit("This one.")
+	# Day 2 only, once: he may be thinking of who will be at Maxwell's.
+	if int((_state.get("data") as Dictionary).get("current_day", 1)) >= 2 and not _state.call("flag", "day2_wardrobe_seen"):
+		_state.call("set_flag", "day2_wardrobe_seen", true)
+		thought_requested.emit("Maria's supposed to be there.")
 
 func _refresh() -> void:
 	var current: String = _state.call("outfit")

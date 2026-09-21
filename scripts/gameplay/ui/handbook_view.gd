@@ -224,6 +224,7 @@ func _render_page() -> void:
 	_body.text = "\n\n".join(lines)
 	if _state != null:
 		_state.call("mark_handbook_read", page_id, entries.keys())
+	_day2_beats(page_id, kind, entries, saved)
 	_folio.text = "%02d / %02d" % [_page_index + 1, pages.size()]
 	_previous.disabled = _page_index == 0
 	_next.disabled = _page_index == pages.size() - 1
@@ -235,3 +236,17 @@ func _render_page() -> void:
 			# Connect to ThoughtPresenter.say; its queue supplies the restrained timing.
 			thought_requested.emit("Tomorrow’s plan...")
 			thought_requested.emit("Did I write this yesterday?")
+
+## Day 2 first-read beats. Chris assumes his previous self wrote everything;
+## the player gets no provenance, no flashback, no author marker.
+func _day2_beats(page_id: String, kind: String, entries: Dictionary, saved: Dictionary) -> void:
+	if _state == null or int(saved.get("current_day", 1)) < 2:
+		return
+	if kind == "plan" and not bool(_state.call("flag", "day2_plan_seen")):
+		_state.call("set_flag", "day2_plan_seen", true)
+		thought_requested.emit("Maxwell's place.")
+	elif page_id == "maria" and entries.has("maria.loves_me") and not bool(_state.call("flag", "day2_maria_seen")):
+		_state.call("set_flag", "day2_maria_seen", true)
+		thought_requested.emit("Maria...?")
+		thought_requested.emit("I don't remember finding that out.")
+		thought_requested.emit("That's why I write things down.")
