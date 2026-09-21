@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/apartment_morning.tscn" id="1_apt"]
+[ext_resource type="PackedScene" path="res://scenes/neighborhood.tscn" id="2_nb"]
+[ext_resource type="Script" path="res://scripts/world/world_day1.gd" id="3_world"]
+
+[node name="WorldDay1" type="Node3D"]
+script = ExtResource("3_world")
+
+[node name="ApartmentMorning" parent="." instance=ExtResource("1_apt")]
+
+[node name="Neighborhood" parent="." instance=ExtResource("2_nb")]

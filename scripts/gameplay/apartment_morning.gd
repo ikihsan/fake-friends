@@ -100,7 +100,8 @@ func _setup_targets() -> void:
 	# The window's latch is the smoke affordance; sill/cup is the coffee affordance.
 	_smoke_target = _target(apartment, "window_smoke", "Smoke by the window", Vector3(8.28, 1.50, 1.99), Vector3(0.19, 0.42, 0.34), _smoke)
 	_drink_target = _target(apartment, "window_coffee", "Look outside", Vector3(8.20, 1.05, 1.40), Vector3(0.21, 0.30, 0.52), _drink)
-	_target(apartment, "leave", "Leave apartment", Vector3(3.80, 1.16, -0.08), Vector3(0.82, 1.80, 0.12), _leave)
+	# No "leave" interaction any more: the front door opens onto the real
+	# neighbourhood (scenes/neighborhood.tscn), so walking out is just walking.
 
 func _process(_delta: float) -> void:
 	if not is_instance_valid(ritual):
@@ -111,14 +112,12 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("handbook") and not wake.transitioning and not endpoint.is_open:
 		if handbook.is_open:
 			handbook.close_book()
-		elif state.call("flag", "handbook_carried") and player.enabled:
+		elif state.call("flag", "handbook_carried") and player.enabled and not state.call("flag", "handbook_with_maxwell"):
+			# Maxwell physically holds the book during the handoff beat.
 			handbook.open_book()
 
-func _physics_process(_delta: float) -> void:
-	if not is_instance_valid(endpoint) or not is_instance_valid(wake):
-		return
-	if not wake.in_bed and not endpoint.is_open and player.position.z < -0.04:
-		_leave(null)
+# The front door no longer ends the build: it opens straight onto the
+# neighbourhood, so there is nothing to trigger when Chris walks out.
 
 func _say(text: String) -> void:
 	thoughts.say(text)
@@ -169,12 +168,6 @@ func _drink(_hit: Target) -> void:
 	else:
 		state.call("set_morning", "window_visited", true)
 
-func _leave(_hit: Target) -> void:
-	if wake.in_bed or wake.transitioning or handbook.is_open:
-		return
-	state.call("set_flag", "day1_build_endpoint", true)
-	endpoint.open()
-
 func _endpoint_opened() -> void:
 	ritual.cancel()
 	player.enabled = false
@@ -183,7 +176,7 @@ func _endpoint_opened() -> void:
 	print("Day 1 development endpoint — no world scene loaded")
 
 func _endpoint_closed() -> void:
-	player.position = Vector3(3.80, 0.04, 0.80)
+	# Whoever opened the overlay leaves Chris standing exactly where he was.
 	player.velocity = Vector3.ZERO
 	player.enabled = true
 	interactor.enabled = true

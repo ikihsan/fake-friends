@@ -44,6 +44,24 @@ func _eyes_open() -> void:
 	player.enabled = true
 	_caption.text = "7:00 AM     ·     Space — Get up"
 
+## Skip the wake-up altogether. Used by scenes that place Chris somewhere other
+## than his bed (dev scenes now, a later "continue the day" load later): the body
+## gets its collision back and normal control, and the black overlay is cleared.
+## Standing up normally does the same thing through _move_to_bedside().
+func skip() -> void:
+	in_bed = false
+	transitioning = false
+	var shape: CollisionShape3D = player.get_node_or_null("Shape") as CollisionShape3D
+	if shape != null:
+		shape.disabled = false
+	player.enabled = true
+	player.movement_enabled = true
+	set_process(false)
+	if _fade != null:
+		_fade.color.a = 0.0
+	if _caption != null:
+		_caption.hide()
+
 func _process(_delta: float) -> void:
 	if in_bed and not transitioning and player.enabled and Input.is_action_just_pressed("stand_up"):
 		stand()
